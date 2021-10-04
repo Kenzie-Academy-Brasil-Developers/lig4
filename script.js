@@ -26,9 +26,11 @@ let cont7 = 5
 const header = document.querySelector('.header')
 
 const botao_inicia = document.querySelector('#generateGame')
+const pokeball_inicial = document.querySelector('#pokeball_start')
 botao_inicia.addEventListener('click', function(){
     header.style.display = 'none'
     botao_inicia.style.display = 'none'
+    pokeball_inicial.style.display = 'none'
     main.style.opacity = '100%'
     audio.play()
 })
