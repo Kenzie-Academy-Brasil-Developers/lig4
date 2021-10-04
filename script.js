@@ -1,3 +1,14 @@
+
+let jogador = true;
+let cont = 5;
+let cont2 = 5;
+let cont3 = 5;
+let cont4 = 5;
+let cont5 = 5;
+let cont6 = 5;
+let cont7 = 5;
+
+const header = document.querySelector('.header');
 const audio = document.querySelector('audio')
 const main = document.querySelector('.main__container')
 
@@ -14,16 +25,9 @@ for(let i = 0; i < 6; i ++){
     }
 }
 
-let jogador = true
-let cont = 5
-let cont2 = 5
-let cont3 = 5
-let cont4 = 5
-let cont5 = 5
-let cont6 = 5
-let cont7 = 5
-
-const header = document.querySelector('.header')
+const player = document.createElement('p');
+player.innerText = 'Player 1';
+main.appendChild(player);
 
 const botao_inicia = document.querySelector('#generateGame')
 botao_inicia.addEventListener('click', function(){
@@ -32,10 +36,9 @@ botao_inicia.addEventListener('click', function(){
     main.style.opacity = '100%'
     audio.play()
 })
-
-
+    
 main.addEventListener('click', function(evt){
-const coluna = evt.target
+    const coluna = evt.target
 
 switch (coluna.id) {
     case 'bloco0-0':
@@ -137,7 +140,7 @@ switch (coluna.id) {
     break
     case 'bloco0-6':
         if(jogador){
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont7, 6, 'red')
             winner(tabuleiro)
@@ -154,6 +157,11 @@ switch (coluna.id) {
    
   }
 
+    if (jogador) {
+        player.innerText = 'Player 1';
+    } else {
+        player.innerText = 'Player 2';
+    }
 })
 
 let tabuleiro = [
