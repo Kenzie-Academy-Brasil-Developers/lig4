@@ -1,3 +1,4 @@
+const audio = document.querySelector('audio')
 const main = document.querySelector('.main__container')
 
 for(let i = 0; i < 6; i ++){
@@ -26,87 +27,97 @@ const header = document.querySelector('.header')
 
 const botao_inicia = document.querySelector('#generateGame')
 botao_inicia.addEventListener('click', function(){
-    console.log('oi')
     header.style.display = 'none'
     botao_inicia.style.display = 'none'
     main.style.opacity = '100%'
+    audio.play()
 })
 
 
 main.addEventListener('click', function(evt){
 const coluna = evt.target
-console.log(coluna)
-
 
 switch (coluna.id) {
     case 'bloco0-0':
         if(jogador){
-            document.getElementById('bloco' + cont + '-0').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
+            winCondition(cont, 0, 'red')
             cont --
         }else{
-            document.getElementById('bloco' + cont + '-0').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
+            winCondition(cont, 0, 'black')
             cont --
         }
         
     break
     case 'bloco0-1':
         if(jogador){
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
+            winCondition(cont2, 1, 'red')
             cont2 --
         }else{
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
+            winCondition(cont2, 1, 'black')
             cont2 --
         }
         
     break
     case 'bloco0-2':
         if(jogador){
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
+            winCondition(cont3, 2, 'red')
             cont3 --
         }else{
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
+            winCondition(cont3, 2, 'black')
             cont3 --
         }
         
     break
     case 'bloco0-3':
         if(jogador){
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
+            winCondition(cont4, 3, 'red')
             cont4 --
         }else{
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
+            winCondition(cont4, 3, 'black')
             cont4 --
         }
         
     break
     case 'bloco0-4':
         if(jogador){
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
+            winCondition(cont5, 4, 'red')
             cont5 --
         }else{
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
+            winCondition(cont5, 4, 'black')
             cont5 --
         }
         
     break
     case 'bloco0-5':
         if(jogador){
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
+            winCondition(cont6, 5, 'red')
             cont6 --
         }else{
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
+            winCondition(cont6, 5, 'black')
             cont6 --
         }
         
@@ -115,10 +126,12 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont7 + '-6').style.backgroundColor = 'red'
             jogador = false
+            winCondition(cont7, 6, 'red')
             cont7 --
         }else{
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
+            winCondition(cont7, 6, 'black')
             cont7 --
         }
         
@@ -127,3 +140,5 @@ switch (coluna.id) {
   }
 
 })
+
+
