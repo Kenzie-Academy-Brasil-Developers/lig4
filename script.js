@@ -43,11 +43,14 @@ switch (coluna.id) {
             document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont, 0, 'red')
+            winner(tabuleiro)
             cont --
+            
         }else{
             document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
             winCondition(cont, 0, 'black')
+            winner(tabuleiro)
             cont --
         }
         
@@ -57,11 +60,13 @@ switch (coluna.id) {
             document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont2, 1, 'red')
+            winner(tabuleiro)
             cont2 --
         }else{
             document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
             winCondition(cont2, 1, 'black')
+            winner(tabuleiro)
             cont2 --
         }
         
@@ -71,11 +76,13 @@ switch (coluna.id) {
             document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont3, 2, 'red')
+            winner(tabuleiro)
             cont3 --
         }else{
             document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
             winCondition(cont3, 2, 'black')
+            winner(tabuleiro)
             cont3 --
         }
         
@@ -85,11 +92,13 @@ switch (coluna.id) {
             document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont4, 3, 'red')
+            winner(tabuleiro)
             cont4 --
         }else{
             document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
             winCondition(cont4, 3, 'black')
+            winner(tabuleiro)
             cont4 --
         }
         
@@ -99,11 +108,13 @@ switch (coluna.id) {
             document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont5, 4, 'red')
+            winner(tabuleiro)
             cont5 --
         }else{
             document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
             winCondition(cont5, 4, 'black')
+            winner(tabuleiro)
             cont5 --
         }
         
@@ -113,11 +124,13 @@ switch (coluna.id) {
             document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont6, 5, 'red')
+            winner(tabuleiro)
             cont6 --
         }else{
             document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
             winCondition(cont6, 5, 'black')
+            winner(tabuleiro)
             cont6 --
         }
         
@@ -127,11 +140,13 @@ switch (coluna.id) {
             document.getElementById('bloco' + cont7 + '-6').style.backgroundColor = 'red'
             jogador = false
             winCondition(cont7, 6, 'red')
+            winner(tabuleiro)
             cont7 --
         }else{
             document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
             winCondition(cont7, 6, 'black')
+            winner(tabuleiro)
             cont7 --
         }
         
@@ -157,3 +172,82 @@ function winCondition(cont, posicao, cor){
     console.log(tabuleiro)
 }
 
+
+function winner(){
+
+const coluna = tabuleiro[0].length - 3
+const linha = tabuleiro.length - 3
+
+    for(let i = 0 ; i < tabuleiro.length;i++){
+
+        for(let j = 0; j < coluna; j++){
+           
+            let current =  tabuleiro[i][j]
+
+            if(current !== 0)
+
+            if(current === tabuleiro[i][j+1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j+3]){
+                textWinner()
+            } 
+        }
+    }
+
+    for(let i = 0; i < linha;i++){
+
+        for(let j = 0; j < tabuleiro[0].length; j++){
+          
+
+            let current = tabuleiro[i][j]
+
+            if(current != 0){
+
+                if( current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j])
+                textWinner()
+            }
+             
+        }
+    }
+
+
+
+
+    for(let i = 0; i < linha; i ++){
+
+        for(let j = 0 ; j < coluna; j++){
+
+            let current = tabuleiro[i][j]
+
+            if(current != 0){
+
+                if(current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]){
+                    textWinner()
+                }
+            }
+        }
+    }
+
+    for(let i = 2; i < tabuleiro.length; i ++){
+
+        for(let j = 0 ; j < coluna; j++){
+
+            let current = tabuleiro[i][j]
+
+            if(current != 0){
+
+                if(current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){
+                    textWinner()
+                }
+            }
+        }
+    }
+
+}
+
+
+function textWinner(){
+
+const text = document.getElementById('result')
+
+text.innerText = '';
+text.innerText = 'Parabéns você venceu'
+}
