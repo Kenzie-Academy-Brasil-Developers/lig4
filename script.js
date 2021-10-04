@@ -138,7 +138,7 @@ main.addEventListener('click', function(evt) {
     if (jogador) {
         player.innerText = 'Player 1';
     } else {
-        player.innerText = 'Palyer 2';
+        player.innerText = 'Player 2';
     }
 
 })
