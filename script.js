@@ -41,11 +41,13 @@ console.log(coluna)
 switch (coluna.id) {
     case 'bloco0-0':
         if(jogador){
-            document.getElementById('bloco' + cont + '-0').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont + '-0').classList.add('vermelho')
+            // winner()
             jogador = false
             cont --
         }else{
-            document.getElementById('bloco' + cont + '-0').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont + '-0').classList.add('preto')
+            // winner()
             jogador = true
             cont --
         }
@@ -53,11 +55,13 @@ switch (coluna.id) {
     break
     case 'bloco0-1':
         if(jogador){
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont2 + '-1').classList.add('vermelho')
+            // winner()
             jogador = false
             cont2 --
         }else{
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont2 + '-1').classList.add('preto')
+            // winner()
             jogador = true
             cont2 --
         }
@@ -65,11 +69,13 @@ switch (coluna.id) {
     break
     case 'bloco0-2':
         if(jogador){
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont3 + '-2').classList.add('vermelho')
+            // winner()
             jogador = false
             cont3 --
         }else{
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont3 + '-2').classList.add('preto')
+            // winner()
             jogador = true
             cont3 --
         }
@@ -77,11 +83,13 @@ switch (coluna.id) {
     break
     case 'bloco0-3':
         if(jogador){
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont4 + '-3').classList.add('vermelho')
+            // winner()
             jogador = false
             cont4 --
         }else{
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont4 + '-3').classList.add('preto')
+            // winner()
             jogador = true
             cont4 --
         }
@@ -89,11 +97,13 @@ switch (coluna.id) {
     break
     case 'bloco0-4':
         if(jogador){
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont5 + '-4').classList.add('vermelho')
+            // winner()
             jogador = false
             cont5 --
         }else{
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont5 + '-4').classList.add('preto')
+            // winner()
             jogador = true
             cont5 --
         }
@@ -101,11 +111,13 @@ switch (coluna.id) {
     break
     case 'bloco0-5':
         if(jogador){
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont6 + '-5').classList.add('vermelho')
+            // winner()
             jogador = false
             cont6 --
         }else{
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont6 + '-5').classList.add('preto')
+            // winner()
             jogador = true
             cont6 --
         }
@@ -113,11 +125,13 @@ switch (coluna.id) {
     break
     case 'bloco0-6':
         if(jogador){
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont7 + '-6').classList.add('vermelho')
+            // winner()
             jogador = false
             cont7 --
         }else{
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundColor = 'black'
+            document.getElementById('bloco' + cont7 + '-6').classList.add('preto')
+            // winner()
             jogador = true
             cont7 --
         }
@@ -125,5 +139,26 @@ switch (coluna.id) {
     break
    
   }
-
+winner();
 })
+
+
+function winner(){
+
+
+let teste = document.getElementsByClassName('linha')
+let teste2 = document.getElementsByClassName('linha__bloco')
+
+for(let i = 0; i < teste.length;i++){
+    
+    for(let j = 0; j < teste2;j++){
+        console.log(teste2[j])
+    }   
+    
+  
+}
+// console.log(teste)
+// if()
+}
+winner()
+// console.log()

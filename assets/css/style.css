@@ -51,3 +51,11 @@ body {
     color: white;
     cursor: pointer;
 }
+
+.vermelho{
+    background-color: red;
+}
+
+.preto{
+    background-color: #000;
+}
