@@ -55,6 +55,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 #pokeball_start:before{
     position: absolute;
     content: "";
@@ -76,4 +77,9 @@ body {
     background-color: rgb(224, 153, 153);
     color: white;
     cursor: pointer;
+    transition: .5s;
+}
+
+#generateGame:not(:hover) {
+    transition: .5s;
 }
