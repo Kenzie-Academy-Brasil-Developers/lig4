@@ -20,8 +20,10 @@ const pokeball_inicial = document.querySelector('#pokeball_start')
 const meowth = document.querySelector('#meowth')
 const balao = document.querySelector('#balao')
 const header = document.querySelector("header")
+const blink = document.querySelector(".blink_me")
 botao_inicia.addEventListener('click', function(){
-    header.style.display = 'none'
+    blink.appendChild(meowth)
+    blink.appendChild(balao)
     botao_inicia.style.display = 'none'
     pokeball_inicial.style.display = 'none'
     meowth.style.backgroundImage = 'url(team.png)'

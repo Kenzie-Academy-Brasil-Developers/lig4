@@ -43,13 +43,13 @@ body {
 }
 
 #pokeball_start{
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     border: 13px solid #242633;
     border-radius: 50%;
     background-image: linear-gradient(
-        #f51939 125px,
-        white 125px
+        #f51939 150px,
+        white 150px
     );
     position: absolute;
     display: flex;
@@ -57,14 +57,16 @@ body {
     align-items: center;
 }
 
-#pokeball_start:before{
-    position: absolute;
-    content: "";
-    height: 25px;
-    width: 250px;
-    background-color: #242633;
-    top: 112.5px;
+
+#pokeball_start:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 300px;
+        background-color: #242633;
+        top: 138.5px;
 }
+
 
 #generateGame{
     width: 60px;
@@ -84,8 +86,8 @@ body {
     height: 489px;
     background-image: url(images/meowth.png);
     position: absolute;
-    left: 10%;
-    bottom: 10%;
+    left: 8%;
+    bottom: 3%;
 }
 #balao{
     width: 300px;
@@ -93,7 +95,7 @@ body {
     background-image: url(images/balao.png);
     position: absolute;
     left: 2%;
-    bottom: 50%;
+    bottom: 47%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -135,3 +137,12 @@ body {
     cursor: pointer;
     background-color: #f51939;
 }
+
+.blink_me {
+    animation: blinker 2s linear;
+  }
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
