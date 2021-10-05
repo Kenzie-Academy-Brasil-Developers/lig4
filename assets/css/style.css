@@ -56,6 +56,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 #pokeball_start:before{
     position: absolute;
     content: "";
