@@ -6,6 +6,7 @@ html, body {
 body {
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url(images/rocketBack.jpg);
 }
 
 .header {
@@ -40,15 +41,39 @@ body {
     border: 1px solid blue;
 }
 
-#generateGame {
+#pokeball_start{
+    height: 250px;
+    width: 250px;
+    border: 13px solid #242633;
+    border-radius: 50%;
+    background-image: linear-gradient(
+        #f51939 125px,
+        white 125px
+    );
     position: absolute;
-    background-color: transparent;
-    border-radius: 5px;
-    font-weight: bold;
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#generateGame:hover {
-    background-color: black;
+#pokeball_start:before{
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 250px;
+    background-color: #242633;
+    top: 112.5px;
+}
+
+#generateGame{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 13px double #242633;
+    z-index: 2;
+}
+
+#generateGame:hover{
+    background-color: rgb(224, 153, 153);
     color: white;
     cursor: pointer;
 }
