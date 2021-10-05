@@ -283,7 +283,9 @@ function textDraw(){
 let count = 0;
 function draw(){
 
-    count++
+
+        count++
+
     
     if(count === 42){
         textDraw()
