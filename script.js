@@ -29,12 +29,23 @@ const pokeball_inicial = document.querySelector('#pokeball_start')
 const header = document.querySelector("header")
 const score = document.querySelector('#scoreBoard')
 
+const pokeballCurrent = document.querySelector('#pokeballCurrent')
+const player = document.createElement('div');
+const textPlayerCurrent = document.createElement('p');
+
+player.classList.add('pokeballPlayer');
+player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
+textPlayerCurrent.innerText = 'Player 1';
+pokeballCurrent.appendChild(player);
+pokeballCurrent.appendChild(textPlayerCurrent);
+
 
 botao_inicia.addEventListener('click', function(){
     audio.play()
     botao_inicia.style.display = 'none'
     pokeball_inicial.style.display = 'none'
     score.style.display = 'flex'
+    pokeballCurrent.style.display = 'flex';
     main.className = 'blink_me'
     body.classList.add('body__background');
     main.append(generateGame())
@@ -190,11 +201,19 @@ switch (coluna.id) {
    
   }
 
-    // if (jogador) {
-    //     player.innerText = 'Player 1';
-    // } else {
-    //     player.innerText = 'Player 2';
-    // }
+  if (jogador) {
+
+    player.style.backgroundImage =  "url('assets/css/images/minpokeball.png')"
+    
+    textPlayerCurrent.innerText = 'Player 1';
+    
+    } else {
+    
+    player.style.backgroundImage =  "url('assets/css/images/minultraball.png')"
+    
+    textPlayerCurrent.innerText = 'Player 2';
+    
+    }
 })
 
 let tabuleiro = [
