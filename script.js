@@ -186,110 +186,95 @@ let tabuleiro = [
     [29,30,31,32,33,34,35],
     [36,37,28,39,40,41,42]
 ]
+
 function winCondition(cont, posicao, cor){
     for(let i = 0; i < 1; i ++){
         tabuleiro[cont].splice(posicao, 1, cor)
     }
    
-    console.log(tabuleiro)
 }
 
+function winner(tabuleiro) {
+    const coluna = tabuleiro[0].length - 3
+    const linha = tabuleiro.length - 3
 
-function winner(){
+    for (let i = 0 ; i < tabuleiro.length; i++) {
 
-const coluna = tabuleiro[0].length - 3
-const linha = tabuleiro.length - 3
-
-    for(let i = 0 ; i < tabuleiro.length;i++){
-
-        for(let j = 0; j < coluna; j++){
+        for(let j = 0; j < coluna; j++) {
            
             let current =  tabuleiro[i][j]
 
-            if(current !== 0)
-
-            if(current === tabuleiro[i][j+1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j+3]){
+            if(current !== 0 && current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
                 textWinner(current)
-            } 
+            }
+            
         }
     }
 
-    for(let i = 0; i < linha;i++){
+    for (let i = 0; i < linha; i++) {
 
-        for(let j = 0; j < tabuleiro[0].length; j++){
+        for(let j = 0; j < tabuleiro[0].length; j++) {
           
+            let current = tabuleiro[i][j]
+
+            if (current !== 0 && current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j]) {
+                textWinner(current)
+            }     
+        }
+    }
+
+    for (let i = 0; i < linha; i ++) {
+
+        for (let j = 0 ; j < coluna; j++) {
 
             let current = tabuleiro[i][j]
 
-            if(current != 0){
-
-                if( current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j])
+            if (current !== 0 && current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]) {
                 textWinner(current)
             }
-             
         }
     }
 
+    for (let i = 2; i < tabuleiro.length; i ++) {
 
-
-
-    for(let i = 0; i < linha; i ++){
-
-        for(let j = 0 ; j < coluna; j++){
+        for (let j = 0 ; j < coluna; j++) {
 
             let current = tabuleiro[i][j]
 
-            if(current != 0){
-
-                if(current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]){
-                    textWinner(current)
-                }
+            if (current !== 0 && current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
+                textWinner(current)
             }
         }
     }
-
-    for(let i = 2; i < tabuleiro.length; i ++){
-
-        for(let j = 0 ; j < coluna; j++){
-
-            let current = tabuleiro[i][j]
-
-            if(current != 0){
-
-                if(current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){
-                    textWinner(current)
-                }
-            }
-        }
-    }
-
 }
 
 
-function textWinner(currentPlayer){
+function textWinner(currentPlayer) {
 
-const text = document.getElementById('result')
+    const text = document.getElementById('result')
 
-text.innerText = '';
-text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
+    text.innerText = '';
+    text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
 }
 
-function textDraw(){
+function textDraw() {
     const text = document.getElementById('result');
     text.innerText  = '';
     text.innerText  = 'Houve um empate'
 }
 
 let count = 0;
-function draw(){
+
+function draw() {
 
 
         count++
 
     
-    if(count === 42){
+    if (count === 42) {
         textDraw()
     }
+    
     console.log(count)
 }
 
