@@ -46,7 +46,7 @@ let cont2 = 5
 let cont3 = 5
 let cont4 = 5
 let cont5 = 5
-let cont6 = 6
+let cont6 = 5
 let cont7 = 5
 
 main.addEventListener('click', function(evt){
