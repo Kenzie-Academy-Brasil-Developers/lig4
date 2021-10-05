@@ -15,22 +15,11 @@ for(let i = 0; i < 6; i ++){
     }
 }
 
-let jogador = true
-let cont = 5
-let cont2 = 5
-let cont3 = 5
-let cont4 = 5
-let cont5 = 5
-let cont6 = 5
-let cont7 = 5
-
-const header = document.querySelector('.header')
-
 const botao_inicia = document.querySelector('#generateGame')
 const pokeball_inicial = document.querySelector('#pokeball_start')
 const meowth = document.querySelector('#meowth')
 const balao = document.querySelector('#balao')
-
+const header = document.querySelector("header")
 botao_inicia.addEventListener('click', function(){
     header.style.display = 'none'
     botao_inicia.style.display = 'none'
@@ -51,6 +40,14 @@ botao_inicia.addEventListener('click', function(){
     audio.play()
 })
 
+let jogador = true
+let cont = 5
+let cont2 = 5
+let cont3 = 5
+let cont4 = 5
+let cont5 = 5
+let cont6 = 6
+let cont7 = 5
 
 main.addEventListener('click', function(evt){
 const coluna = evt.target
@@ -60,12 +57,17 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
-            winCondition(cont, 0, 'red')
+            winCondition(cont, 0, 'Player 1')
+            winner(tabuleiro)
+            draw()
             cont --
+            
         }else{
             document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
-            winCondition(cont, 0, 'black')
+            winCondition(cont, 0, 'Player 2')
+            winner(tabuleiro)
+            draw()
             cont --
         }
         
@@ -74,12 +76,16 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
-            winCondition(cont2, 1, 'red')
+            winCondition(cont2, 1, 'Player 1')
+            winner(tabuleiro)
+            draw()
             cont2 --
         }else{
             document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
-            winCondition(cont2, 1, 'black')
+            winCondition(cont2, 1, 'Player 2')
+            winner(tabuleiro)
+            draw()
             cont2 --
         }
         
@@ -88,12 +94,16 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
-            winCondition(cont3, 2, 'red')
+            winCondition(cont3, 2, 'Player 1')
+            winner(tabuleiro)
+            draw()
             cont3 --
         }else{
             document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
-            winCondition(cont3, 2, 'black')
+            winCondition(cont3, 2, 'Player 2')
+            winner(tabuleiro)
+            draw()
             cont3 --
         }
         
@@ -102,12 +112,16 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
-            winCondition(cont4, 3, 'red')
+            winCondition(cont4, 3, 'Player 1')
+            winner(tabuleiro)
+            draw()
             cont4 --
         }else{
             document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
-            winCondition(cont4, 3, 'black')
+            winCondition(cont4, 3, 'Player 2')
+            winner(tabuleiro)
+            draw()
             cont4 --
         }
         
@@ -116,12 +130,16 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
-            winCondition(cont5, 4, 'red')
+            winCondition(cont5, 4, 'Player 1')
+            winner(tabuleiro)
+            draw()
             cont5 --
         }else{
             document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
-            winCondition(cont5, 4, 'black')
+            winCondition(cont5, 4, 'Player 2')
+            winner(tabuleiro)
+            draw()
             cont5 --
         }
         
@@ -130,12 +148,16 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
-            winCondition(cont6, 5, 'red')
+            winCondition(cont6, 5, 'Player 1')
+            winner(tabuleiro)
+            draw()
             cont6 --
         }else{
             document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
-            winCondition(cont6, 5, 'black')
+            winCondition(cont6, 5, 'Player 2')
+            winner(tabuleiro)
+            draw()
             cont6 --
         }
         
@@ -144,12 +166,16 @@ switch (coluna.id) {
         if(jogador){
             document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
-            winCondition(cont7, 6, 'red')
+            winCondition(cont7, 6, 'Player 1')
+            winner(tabuleiro)
+            draw()
             cont7 --
         }else{
             document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/ultraball.png')"
             jogador = true
-            winCondition(cont7, 6, 'black')
+            winCondition(cont7, 6, 'Player 2')
+            winner(tabuleiro)
+            draw()
             cont7 --
         }
         
@@ -157,6 +183,11 @@ switch (coluna.id) {
    
   }
 
+    if (jogador) {
+        player.innerText = 'Player 1';
+    } else {
+        player.innerText = 'Player 2';
+    }
 })
 
 let tabuleiro = [
@@ -167,11 +198,93 @@ let tabuleiro = [
     [29,30,31,32,33,34,35],
     [36,37,28,39,40,41,42]
 ]
+
 function winCondition(cont, posicao, cor){
     for(let i = 0; i < 1; i ++){
         tabuleiro[cont].splice(posicao, 1, cor)
     }
    
-    console.log(tabuleiro)
+}
+
+function winner() {
+    const coluna = tabuleiro[0].length - 3
+    const linha = tabuleiro.length - 3
+
+    for (let i = 0 ; i < tabuleiro.length; i++) {
+
+        for(let j = 0; j < coluna; j++) {
+           
+            let current =  tabuleiro[i][j]
+
+            if(current !== 0 && current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
+                textWinner(current)
+            }
+            
+        }
+    }
+
+    for (let i = 0; i < linha; i++) {
+
+        for(let j = 0; j < tabuleiro[0].length; j++) {
+          
+            let current = tabuleiro[i][j]
+
+            if (current !== 0 && current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j]) {
+                textWinner(current)
+            }     
+        }
+    }
+
+    for (let i = 0; i < linha; i ++) {
+
+        for (let j = 0 ; j < coluna; j++) {
+
+            let current = tabuleiro[i][j]
+
+            if (current !== 0 && current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]) {
+                textWinner(current)
+            }
+        }
+    }
+
+    for (let i = 2; i < tabuleiro.length; i ++) {
+
+        for (let j = 0 ; j < coluna; j++) {
+
+            let current = tabuleiro[i][j]
+
+            if (current !== 0 && current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
+                textWinner(current)
+            }
+        }
+    }
+}
+
+
+function textWinner(currentPlayer) {
+
+    const text = document.getElementById('result')
+
+    text.innerText = '';
+    text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
+}
+
+function textDraw() {
+    const text = document.getElementById('result');
+    text.innerText  = '';
+    text.innerText  = 'Houve um empate'
+}
+
+let count = 0;
+
+function draw() {
+
+    count++
+    
+    if (count === 42) {
+        textDraw()
+    }
+    
+    console.log(count)
 }
 
