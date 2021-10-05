@@ -17,27 +17,12 @@ for(let i = 0; i < 6; i ++){
 
 const botao_inicia = document.querySelector('#generateGame')
 const pokeball_inicial = document.querySelector('#pokeball_start')
-const meowth = document.querySelector('#meowth')
-const balao = document.querySelector('#balao')
+
 const header = document.querySelector("header")
-const blink = document.querySelector(".blink_me")
+
 botao_inicia.addEventListener('click', function(){
-    blink.appendChild(meowth)
-    blink.appendChild(balao)
     botao_inicia.style.display = 'none'
     pokeball_inicial.style.display = 'none'
-    meowth.style.backgroundImage = 'url(team.png)'
-    meowth.style.bottom = '0px'
-    meowth.style.left = '2px'
-    balao.style.backgroundImage = 'url(balaodefala.png)'
-    balao.style.width = '500px'
-    balao.style.height = '449px'
-    const blocotext = document.createElement("div")
-    blocotext.style.width = '300px'
-    blocotext.style.height = '300px'
-    blocotext.id = 'blocotext'
-    blocotext.innerText = "No Lig-4, um jogador assume a cor Vermelha e o outro assume a cor Preta. Os jogadores se alternam inserindo suas peças em uma das 7 colunas de uma tabela 7x6. O primeiro jogador que conseguir quatro de suas peças em uma linha (seja horizontal, vertical ou diagonal) vence. (Clique em um dos blocos da primeira linha para começar a jogar)"
-    balao.append(blocotext)
     main.style.opacity = '100%'
     audio.play()
 })

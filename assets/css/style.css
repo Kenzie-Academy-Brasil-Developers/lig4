@@ -81,34 +81,7 @@ body {
     color: white;
     cursor: pointer;
 }
-#meowth{
-    width: 450px;
-    height: 489px;
-    background-image: url(images/meowth.png);
-    position: absolute;
-    left: 8%;
-    bottom: 3%;
-}
-#balao{
-    width: 300px;
-    height: 259px;
-    background-image: url(images/balao.png);
-    position: absolute;
-    left: 2%;
-    bottom: 47%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    font-size: 1vw;
-}
-#blocotext{
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-}
+
 #bloco0-0:hover{
     cursor: pointer;
     background-color: #f51939;
@@ -137,12 +110,3 @@ body {
     cursor: pointer;
     background-color: #f51939;
 }
-
-.blink_me {
-    animation: blinker 2s linear;
-  }
-  @keyframes blinker {
-    50% {
-      opacity: 0;
-    }
-  }
