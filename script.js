@@ -1,4 +1,5 @@
-const audio = document.querySelector('audio')
+const audio = document.querySelector('#pokeball_sound')
+const audio2 = document.querySelector('#musica_fundo')
 const main = document.querySelector('.main__container')
 
 for(let i = 0; i < 6; i ++){
@@ -27,10 +28,25 @@ const header = document.querySelector('.header')
 
 const botao_inicia = document.querySelector('#generateGame')
 const pokeball_inicial = document.querySelector('#pokeball_start')
+const meowth = document.querySelector('#meowth')
+const balao = document.querySelector('#balao')
+
 botao_inicia.addEventListener('click', function(){
     header.style.display = 'none'
     botao_inicia.style.display = 'none'
     pokeball_inicial.style.display = 'none'
+    meowth.style.backgroundImage = 'url(team.png)'
+    meowth.style.bottom = '0px'
+    meowth.style.left = '2px'
+    balao.style.backgroundImage = 'url(balaodefala.png)'
+    balao.style.width = '500px'
+    balao.style.height = '449px'
+    const blocotext = document.createElement("div")
+    blocotext.style.width = '300px'
+    blocotext.style.height = '300px'
+    blocotext.id = 'blocotext'
+    blocotext.innerText = "No Lig-4, um jogador assume a cor Vermelha e o outro assume a cor Preta. Os jogadores se alternam inserindo suas peças em uma das 7 colunas de uma tabela 7x6. O primeiro jogador que conseguir quatro de suas peças em uma linha (seja horizontal, vertical ou diagonal) vence. (Clique em um dos blocos da primeira linha para começar a jogar)"
+    balao.append(blocotext)
     main.style.opacity = '100%'
     audio.play()
 })
@@ -38,7 +54,7 @@ botao_inicia.addEventListener('click', function(){
 
 main.addEventListener('click', function(evt){
 const coluna = evt.target
-
+audio2.play()
 switch (coluna.id) {
     case 'bloco0-0':
         if(jogador){
@@ -126,7 +142,7 @@ switch (coluna.id) {
     break
     case 'bloco0-6':
         if(jogador){
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundColor = 'red'
+            document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/pokeball.png')"
             jogador = false
             winCondition(cont7, 6, 'red')
             cont7 --

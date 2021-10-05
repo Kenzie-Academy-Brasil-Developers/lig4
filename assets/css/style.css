@@ -7,6 +7,7 @@ body {
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(images/rocketBack.jpg);
+    height: 90vh;
 }
 
 .header {
@@ -76,4 +77,60 @@ body {
     background-color: rgb(224, 153, 153);
     color: white;
     cursor: pointer;
+}
+#meowth{
+    width: 450px;
+    height: 489px;
+    background-image: url(images/meowth.png);
+    position: absolute;
+    left: 10%;
+    bottom: 10%;
+}
+#balao{
+    width: 300px;
+    height: 259px;
+    background-image: url(images/balao.png);
+    position: absolute;
+    left: 2%;
+    bottom: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 1vw;
+}
+#blocotext{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+#bloco0-0:hover{
+    cursor: pointer;
+    background-color: #f51939;
+}
+#bloco0-1:hover{
+    cursor: pointer;
+    background-color: #f51939;
+}
+#bloco0-2:hover{
+    cursor: pointer;
+    background-color: #f51939;
+}
+#bloco0-3:hover{
+    cursor: pointer;
+    background-color: #f51939;
+}
+#bloco0-4:hover{
+    cursor: pointer;
+    background-color: #f51939;
+}
+#bloco0-5:hover{
+    cursor: pointer;
+    background-color: #f51939;
+}
+#bloco0-6:hover{
+    cursor: pointer;
+    background-color: #f51939;
 }
