@@ -4,28 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lig 4</title>
+    <title>Lig 4 - Equipe Rocket</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="shortcut icon" href="assets/css/images/pokemon_go_play_game_cinema_film_movie_icon-icons.com_69163 (1).ico" type="image/x-icon">
 </head>
 <body>
-    <header class="header">
-        <h1 class="header__title">Lig4</h1>
-    </header>
+<section id="win">
+    <h2 id="result"></h2>
+</section>
 
-<section id="win" class="sectionWin">
-    <h2 id="result" class="resultWin"></h2>
+<section id="scoreBoard" class="score">
+    <h3>Player 1 <span id="score__scoreOne"></span></h3> <h3>Player 2 <span id="score__scoreTwo"></span></h3> 
 </section>
 
     <main class="main">
         <!--Minha ideia é gerar o jogo dentro dessa section a partir do botão-->
+        
         <section class="main__container">
 
         </section>
-        <button id="generateGame">Clique Aqui</button>
-        <audio src="assets/css/images/Sound Effects - Pokémon Anime (7) Pokémon Out.mp3"></audio>
+        <div id='pokeball_start'>
+            <button id="generateGame">></button>
+        </div>
+        <audio src="assets/css/images/Sound Effects - Pokémon Anime (7) Pokémon Out.mp3" id='pokeball_sound'></audio>
+        <audio src="assets/css/images/Radio Tower Takeover - Pokémon HeartGoldSoulSilver.mp3" id='musica_fundo'></audio>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
