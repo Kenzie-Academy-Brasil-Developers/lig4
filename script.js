@@ -194,7 +194,7 @@ function winCondition(cont, posicao, cor){
    
 }
 
-function winner() {
+function winner(tabuleiro) {
     const coluna = tabuleiro[0].length - 3
     const linha = tabuleiro.length - 3
 
