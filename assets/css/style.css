@@ -15,6 +15,26 @@ body {
     font-weight: 900;
 }
 
+.borda{
+    display: none;
+    background-color: red;
+    width: 100px;
+    height: 612px;
+    margin: 60px 805px 0 0;
+    position: absolute;
+    border-left: 5px solid black;
+}
+
+.bordaTwo{
+    display: none;
+    background-color: red;
+    width: 100px;
+    height: 612px;
+    margin: 60px 0 0 833px;
+    position: absolute;
+    border-right: 5px solid black;
+}
+
 .sectionWin{
 display: flex;
 justify-content: center;
@@ -32,14 +52,16 @@ color: #588b8b;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0;
 }
 
 .main__container {
-    display: flex;
+    /* display: flex; */
     margin-top: 60px;
     width: 700px;
     flex-wrap: wrap;
-    opacity: 1%;
+    display: none;
+  
 }
 
 .linha {
@@ -51,6 +73,22 @@ color: #588b8b;
     width: 100px;
     height: 100px;
     border: 1px solid blue;
+}
+
+.pokeballPlayer{
+    /* background-color */
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.pokeball{
+    display: none;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 20px;
+   /* margin-right: 600px; */
 }
 
 #generateGame {

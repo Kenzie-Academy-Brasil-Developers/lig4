@@ -9,31 +9,41 @@ let cont6 = 5;
 let cont7 = 5;
 
 const header = document.querySelector('.header');
-const audio = document.querySelector('audio')
-const main = document.querySelector('.main__container')
+const audio = document.querySelector('audio');
+const main = document.querySelector('.main__container');
+const borderLeft = document.querySelector('#borderLeft')
+const borderRight = document.querySelector('#borderRight')
 
-for(let i = 0; i < 6; i ++){
-    const linha = document.createElement('section')
-    linha.className = 'linha'
-    linha.id = 'linha' + i
-    main.appendChild(linha)
-    for(let j = 0; j < 7; j++){
-        const bloco = document.createElement('div')
-        bloco.className = 'linha__bloco'
-        bloco.id = 'bloco' + i + '-' + j
-        linha.appendChild(bloco)
-    }
-}
+const pokeballCurrent = document.querySelector('#pokeballCurrent')
 
-const player = document.createElement('p');
-player.innerText = 'Player 1';
-main.appendChild(player);
+const player = document.createElement('div');
+const textPlayerCurrent = document.createElement('p');
+player.classList.add('pokeballPlayer');
+player.style.backgroundImage = "url('assets/css/images/minipokeball.png')";
+textPlayerCurrent.innerText = 'Player 1';
+pokeballCurrent.appendChild(player);
+pokeballCurrent.appendChild(textPlayerCurrent);
 
 const botao_inicia = document.querySelector('#generateGame')
 botao_inicia.addEventListener('click', function(){
-    header.style.display = 'none'
-    botao_inicia.style.display = 'none'
-    main.style.opacity = '100%'
+    for(let i = 0; i < 6; i ++){
+        const linha = document.createElement('section')
+        linha.className = 'linha'
+        linha.id = 'linha' + i
+        main.appendChild(linha)
+        for(let j = 0; j < 7; j++){
+            const bloco = document.createElement('div')
+            bloco.className = 'linha__bloco'
+            bloco.id = 'bloco' + i + '-' + j
+            linha.appendChild(bloco)
+        }
+    }
+    header.style.display = 'none';
+    botao_inicia.style.display = 'none';
+    main.style.display = 'flex';
+    pokeballCurrent.style.display = 'flex';
+    borderLeft.style.display = 'block';
+    borderRight.style.display = 'block';
     audio.play()
 })
     
@@ -172,9 +182,11 @@ switch (coluna.id) {
   }
 
     if (jogador) {
-        player.innerText = 'Player 1';
+        player.style.backgroundImage =  "url('assets/css/images/minipokeball.png')"
+        textPlayerCurrent.innerText = 'Player 1';
     } else {
-        player.innerText = 'Player 2';
+        player.style.backgroundImage =  "url('assets/css/images/miniultraball.png')"
+        textPlayerCurrent.innerText = 'Player 2';
     }
 })
 
