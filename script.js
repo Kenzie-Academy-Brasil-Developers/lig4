@@ -35,8 +35,6 @@ botao_inicia.addEventListener('click', function(){
     audio.play()
 })
 
-const botao_inicia = document.querySelector('#generateGame');
-
 main.addEventListener('click', function(evt){
 const coluna = evt.target
 
@@ -142,7 +140,7 @@ switch (coluna.id) {
    
   }
 
-})
+});
 
 let tabuleiro = [
     [1,2,3,4,5,6,7],
