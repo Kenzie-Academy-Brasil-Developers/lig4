@@ -28,17 +28,13 @@ const botao_inicia = document.querySelector('#generateGame')
 const pokeball_inicial = document.querySelector('#pokeball_start')
 const header = document.querySelector("header")
 
+
 botao_inicia.addEventListener('click', function(){
     audio.play()
     botao_inicia.style.display = 'none'
     pokeball_inicial.style.display = 'none'
     main.className = 'blink_me'
-    header.style.display = 'none'
-    main.style.opacity = '100%'
-    main.style.marginTop = '50%'
     body.classList.add('body__background');
-
-    
     main.append(generateGame())
     audio.play()
 })
@@ -52,7 +48,7 @@ let cont5 = 5
 let cont6 = 5
 let cont7 = 5
 
-main.addEventListener('click', function(evt){
+mainContainer.addEventListener('click', function(evt){
 const coluna = evt.target
 audio2.play()
 switch (coluna.id) {
@@ -186,11 +182,11 @@ switch (coluna.id) {
    
   }
 
-    if (jogador) {
-        player.innerText = 'Player 1';
-    } else {
-        player.innerText = 'Player 2';
-    }
+    // if (jogador) {
+    //     player.innerText = 'Player 1';
+    // } else {
+    //     player.innerText = 'Player 2';
+    // }
 })
 
 let tabuleiro = [

@@ -15,6 +15,9 @@ body {
     background-color: #4f4f51;
     height: 640px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .body__background {
@@ -25,7 +28,6 @@ body {
 }
 
 .header {
-    margin: 50px;
     text-align: center;
     font-size: 5rem;
     font-weight: 900;
@@ -42,9 +44,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
-    margin-top: 60px;
     width: 329px;
-    flex-wrap: wrap;
 }
 
 .linha {
@@ -67,7 +67,6 @@ body {
         #f51939 100px,
         white 100px
     );
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,7 +145,7 @@ body {
 
 .blink_me {
     animation: blinker 2.5s linear;
-  }
+}
   
   @keyframes blinker {
     100% {
