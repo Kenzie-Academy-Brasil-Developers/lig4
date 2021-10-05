@@ -1,3 +1,9 @@
+
+/* @font-face {
+    font-family: FreePixel;
+    src: url('FreePixel.ttf');
+} */
+
 html, body {
     height: 100%;
     width: 100%;
@@ -6,12 +12,16 @@ html, body {
 body {
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #4f4f51;
+    height: 640px;
+    overflow: hidden;
+}
+
+.body__background {
     background-image: url(images/rocketBack2.jpg);
     background-size: 90%;
     background-position-x: -128%;
     background-position-y: 5%;
-    height: 100vh;
-    
 }
 
 .header {
@@ -25,14 +35,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .main__container {
     display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
     margin-top: 60px;
     width: 329px;
     flex-wrap: wrap;
-    opacity: 1%;
 }
 
 .linha {
@@ -59,6 +71,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: float 1.5s infinite;
 }
 
 
@@ -78,40 +91,59 @@ body {
     border-radius: 50%;
     border: 13px double #242633;
     z-index: 2;
+    font-size: 1.5rem;
+    font-weight: 900;
 }
+
+
 
 #generateGame:hover{
     color: white;
+    transition: .5s;
+    animation: blinking-show .5s infinite;
+    cursor: pointer;
+}
+
+#generateGame:not(:hover) {
+    transition: .5s;
+    
 }
 
 #bloco0-0:hover{
     cursor: pointer;
     background-color: #f5193ad2;
 }
+
 #bloco0-1:hover{
     cursor: pointer;
     background-color: #f5193ad2;
 }
+
 #bloco0-2:hover{
     cursor: pointer;
     background-color: #f5193ad2;
 }
+
 #bloco0-3:hover{
     cursor: pointer;
     background-color: #f5193ad2;
 }
+
 #bloco0-4:hover{
     cursor: pointer;
     background-color: #f5193ad2;
 }
+
 #bloco0-5:hover{
     cursor: pointer;
     background-color: #f5193ad2;
 }
+
 #bloco0-6:hover{
     cursor: pointer;
-    background-color: #f5193ad2;
+    background-color: #f51939;
 }
+
 .blink_me {
     animation: blinker 2.5s linear;
   }
@@ -119,5 +151,36 @@ body {
   @keyframes blinker {
     100% {
       opacity: 0;
+    }
+}
+    
+@keyframes blinking-show {
+    0% {
+        background-color: rgb(224, 153, 153);
+        color: #FFF;
+    }
+
+    50% {
+        background-color: #FFF;
+        color: #000;
+    }
+
+    100% {
+        background-color: rgb(224, 153, 153);
+        color: #FFF;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(10px);
+    }
+    
+    50% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(10px);
     }
 }

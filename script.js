@@ -1,23 +1,33 @@
 const audio = document.querySelector('#pokeball_sound')
 const audio2 = document.querySelector('#musica_fundo')
-const main = document.querySelector('.main__container')
+const mainContainer = document.querySelector('.main__container')
+const main = document.querySelector('.main')
+const body = document.body;
 
-for(let i = 0; i < 6; i ++){
-    const linha = document.createElement('section')
-    linha.className = 'linha'
-    linha.id = 'linha' + i
-    main.appendChild(linha)
-    for(let j = 0; j < 7; j++){
-        const bloco = document.createElement('div')
-        bloco.className = 'linha__bloco'
-        bloco.id = 'bloco' + i + '-' + j
-        linha.appendChild(bloco)
+const generateGame = () => {
+    for (let i = 0; i < 6; i ++) {
+        const linha = document.createElement('section')
+
+        linha.className = 'linha'
+        linha.id = 'linha' + i
+
+        mainContainer.appendChild(linha)
+
+        for (let j = 0; j < 7; j++) {
+            const bloco = document.createElement('div')
+
+            bloco.className = 'linha__bloco'
+            bloco.id = 'bloco' + i + '-' + j
+
+            linha.appendChild(bloco)
+        }
     }
 }
 
 const botao_inicia = document.querySelector('#generateGame')
 const pokeball_inicial = document.querySelector('#pokeball_start')
 const header = document.querySelector("header")
+
 botao_inicia.addEventListener('click', function(){
     audio.play()
     botao_inicia.style.display = 'none'
@@ -26,7 +36,11 @@ botao_inicia.addEventListener('click', function(){
     header.style.display = 'none'
     main.style.opacity = '100%'
     main.style.marginTop = '50%'
+    body.classList.add('body__background');
+
     
+    main.append(generateGame())
+    audio.play()
 })
 
 let jogador = true
