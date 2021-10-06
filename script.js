@@ -1,6 +1,7 @@
 const main = document.querySelector('.main')
 const body = document.body;
 const mainContainer = document.querySelector('.main__container')
+const score = document.getElementById('scoreBoard');
 const audio = document.querySelector('#pokeball_sound')
 const audio2 = document.querySelector('#musica_fundo')
 
@@ -94,7 +95,7 @@ const buildInstructions = () => {
     
     instructionsArray.forEach( item => {
         const instructionsItem = document.createElement('p');
-        instructionsItem.classList.add('instructions__item')
+        instructionsItem.classList.add('instructions__item');
         instructionsItem.innerText = `${c}- ${item}`;
 
         instructionsDiv.appendChild(instructionsItem);
@@ -134,6 +135,9 @@ const buildPokeball = () => {
         body.classList.add('body__background');
 
         mainContainer.append(generateGame());
+
+        pokeballCurrent.style.display = 'flex';
+        score.style.display = 'flex';
     });
 }
 
@@ -156,6 +160,15 @@ const generateGame = () => {
         }
     }
 }
+
+const pokeballCurrent = document.querySelector('#pokeballCurrent')
+const player = document.createElement('div');
+const textPlayerCurrent = document.createElement('p');
+player.classList.add('pokeballPlayer');
+player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
+textPlayerCurrent.innerText = 'Player 1';
+pokeballCurrent.appendChild(player);
+pokeballCurrent.appendChild(textPlayerCurrent);
 
 let jogador = true
 let cont = 5
@@ -462,7 +475,9 @@ reset.addEventListener('click', function(){
     ]
     document.getElementById('result').innerText = ''
     player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
-    })
+    textPlayerCurrent.innerText = 'Player 1';
+    mainContainer.style.pointerEvents = 'auto';
+})
     
 
 
