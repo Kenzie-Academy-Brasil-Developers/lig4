@@ -126,6 +126,20 @@ width: 100px;
     display: flex;
     justify-content: space-between;
 }
+
+.menu__button {
+    border: none;
+    font-family: 'Free Pixel';
+    padding: 5px;
+}
+
+.instructions__div {
+    text-align: center;
+}
+
+.instructions__item {
+    margin-bottom: 5px;
+}
 /* Estilização do Menu - Fim */
 
 .linha {
@@ -154,8 +168,7 @@ width: 100px;
   
 }
 
-
-#pokeballStart{
+#pokeballStart {
     height: 200px;
     width: 200px;
     border: 13px solid #242633;
