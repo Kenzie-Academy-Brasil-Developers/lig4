@@ -120,7 +120,6 @@ const buildPokeball = () => {
     const pokeballButton = document.createElement('button');
     pokeballButton.id = 'generateGame';
     pokeballButton.innerText = '>'
-
     nest.appendChild(pokeballButton);
     mainContainer.appendChild(nest);
 
