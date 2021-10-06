@@ -1,8 +1,125 @@
-const audio = document.querySelector('#pokeball_sound')
-const audio2 = document.querySelector('#musica_fundo')
-const mainContainer = document.querySelector('.main__container')
 const main = document.querySelector('.main')
 const body = document.body;
+const mainContainer = document.querySelector('.main__container')
+
+const audio = document.querySelector('#pokeball_sound')
+const audio2 = document.querySelector('#musica_fundo')
+
+const information = () => {
+    const menu = document.createElement('div');
+    menu.classList.add('menu-game');
+
+    const menuTitle = document.createElement('h1');
+    menuTitle.classList.add('menu-game__title')
+    menuTitle.innerText = 'Lig4';
+
+    const menuImg = document.createElement('img');
+    menuImg.classList.add('menu-game__img');
+    menuImg.src = './assets/css/images/pokemon-logo.png';
+
+    const menuParagraph = document.createElement('p');
+    menuParagraph.innerText = 'Seja bem-vindo(a)!';
+
+    const optionsList = document.createElement('ul');
+    optionsList.classList.add('menu-game__button-nest')
+
+    const optionsArray = ['Instruções',
+                          'Start >'
+                         ];
+    let c = 0;
+
+    optionsArray.forEach( item => {
+        const optionsItem = document.createElement('li');
+        optionsItem.classList.add('options__items');
+        
+        const navButton = document.createElement('button');
+        navButton.id = `button${c}`
+        navButton.classList.add('menu__button');
+
+        navButton.innerText = item;
+        
+        optionsItem.appendChild(navButton)
+
+        optionsList.appendChild(optionsItem);
+
+        c++;
+    });
+
+    menu.appendChild(menuTitle);
+    menu.appendChild(menuImg);
+    menu.appendChild(menuParagraph);
+    menu.appendChild(optionsList);
+
+    mainContainer.appendChild(menu);
+}
+
+information();
+
+window.onload = () => {
+    mainContainer.style.animation = 'rising 5s';
+};
+
+const buttonInstructions = document.getElementById('button0');
+const buttonStart = document.getElementById('button1');
+
+buttonInstructions.addEventListener('click', () => {
+    mainContainer.innerHTML = '';
+    buildInstructions();
+})
+
+buttonStart.addEventListener('click', () => {
+    mainContainer.innerHTML = '';
+    buildPokeball();
+});
+
+const buildInstructions = () => {
+    const instructionsDiv = document.createElement('div');
+    instructionsDiv.classList.add('instructions__div');
+
+    const instructionsTitle = document.createElement('h2');
+    instructionsTitle.innerText = 'Instruções do Jogo';
+
+    const instructionsParagraph = document.createElement('p');
+    instructionsParagraph.innerText = '';
+
+    instructionsDiv.appendChild(instructionsTitle);
+    instructionsDiv.appendChild(instructionsParagraph);
+    instructionsDiv.appendChild(buttonStart);
+    mainContainer.appendChild(instructionsDiv);
+
+    buttonStart.addEventListener('click', () => {
+        mainContainer.innerHTML = '';
+        buildPokeball();
+    }); 
+}
+
+const buildPokeball = () => {
+    mainContainer.style.animation = 'rising 5s';
+
+    const nest = document.createElement('div');
+    nest.id = 'pokeballStart';
+
+    const pokeballButton = document.createElement('button');
+    pokeballButton.id = 'generateGame';
+    pokeballButton.innerText = '>'
+
+    nest.appendChild(pokeballButton);
+    mainContainer.appendChild(nest);
+
+    const startButton = document.getElementById('generateGame');
+
+    startButton.addEventListener('click', () => {
+        mainContainer.innerHTML = '';
+
+        audio.play();
+
+        main.className = 'blink_me';
+
+        body.classList.add('body__background');
+
+        mainContainer.append(generateGame());
+    });
+}
 
 const generateGame = () => {
     for (let i = 0; i < 6; i ++) {
@@ -23,21 +140,6 @@ const generateGame = () => {
         }
     }
 }
-
-const botao_inicia = document.querySelector('#generateGame')
-const pokeball_inicial = document.querySelector('#pokeball_start')
-const header = document.querySelector("header")
-
-
-botao_inicia.addEventListener('click', function(){
-    audio.play()
-    botao_inicia.style.display = 'none'
-    pokeball_inicial.style.display = 'none'
-    main.className = 'blink_me'
-    body.classList.add('body__background');
-    main.append(generateGame())
-    audio.play()
-})
 
 let jogador = true
 let cont = 5
