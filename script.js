@@ -106,7 +106,6 @@ const buildInstructions = () => {
 
     buttonStart.addEventListener('click', () => {
         mainContainer.innerHTML = '';
-        mainContainer.style.animation = 'rising 5s';
         buildPokeball();
     }); 
 }
@@ -122,9 +121,9 @@ const buildPokeball = () => {
     nest.appendChild(pokeballButton);
     mainContainer.appendChild(nest);
 
-    const startButton = document.getElementById('generateGame');
+    const generateGameButton = document.getElementById('generateGame');
 
-    startButton.addEventListener('click', () => {
+    generateGameButton.addEventListener('click', () => {
         mainContainer.innerHTML = '';
 
         audio.play();
