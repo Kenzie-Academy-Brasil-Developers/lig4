@@ -1,8 +1,12 @@
+@font-face {
+    font-family: 'Free Pixel';
+    src: url('/assets/fonts/FreePixel.ttf');
+}
 
-/* @font-face {
-    font-family: FreePixel;
-    src: url('FreePixel.ttf');
-} */
+@font-face {
+    font-family: 'Pokemon Hollow';
+    src: url('/assets/fonts/PokemonHollow.ttf');
+}
 
 html, body {
     height: 100%;
@@ -11,8 +15,9 @@ html, body {
 
 body {
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #4f4f51;
+    font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
+    /* background-color: #4f4f51; */
+    background-color: #FFF;
     height: 640px;
     overflow: hidden;
     display: flex;
@@ -95,10 +100,33 @@ width: 100px;
 
 .main__container {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 329px;
 }
+
+/* Estilização do Menu - Início */
+.menu-game {
+    font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.menu-game__title {
+    font-size: 5rem;
+    font-weight: 900;
+}
+
+.menu-game__img {
+    width: 160px;
+    font-family: 'Pokemon Hollow';
+}
+
+.menu-game__button-nest {
+    display: flex;
+    justify-content: space-between;
+}
+/* Estilização do Menu - Fim */
 
 .linha {
     display: flex;
@@ -126,7 +154,8 @@ width: 100px;
   
 }
 
-#pokeball_start{
+
+#pokeballStart{
     height: 200px;
     width: 200px;
     border: 13px solid #242633;
@@ -142,7 +171,7 @@ width: 100px;
 }
 
 
-#pokeball_start:before {
+#pokeballStart:before {
         position: absolute;
         content: "";
         height: 15px;
@@ -150,7 +179,6 @@ width: 100px;
         background-color: #242633;
         top: 95.5px;
 }
-
 
 #generateGame{
     width: 60px;
@@ -265,3 +293,12 @@ width: 100px;
     border-radius: 7px;
 }
 
+@keyframes rising {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
