@@ -206,13 +206,10 @@ switch (coluna.id) {
     player.style.backgroundImage =  "url('assets/css/images/minpokeball.png')"
     
     textPlayerCurrent.innerText = 'Player 1';
-    
+
     } else {
-    
     player.style.backgroundImage =  "url('assets/css/images/minultraball.png')"
-    
     textPlayerCurrent.innerText = 'Player 2';
-    
     }
 })
 
