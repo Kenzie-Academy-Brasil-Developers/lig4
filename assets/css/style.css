@@ -302,3 +302,8 @@ width: 100px;
         opacity: 1;
     }
 }
+
+
+.colorWinner{
+    background-color: green;
+}
