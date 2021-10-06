@@ -222,6 +222,22 @@ let tabuleiro = [
     [36,37,28,39,40,41,42]
 ]
 
+let scoreboardOne = 0;
+let scoreboardTwo = 0;
+
+function scoreboard(currentPlayer){
+const scoreOne = document.getElementById('score__scoreOne')
+const scoreTwo = document.getElementById('score__scoreTwo')
+   if(currentPlayer === 'Player 1'){
+       scoreboardOne++
+       scoreOne.innerText = scoreboardOne
+   }
+   if(currentPlayer === 'Player 2'){
+       scoreboardTwo++
+       scoreTwo.innerText =  scoreboardTwo
+   }
+}
+
 function winCondition(cont, posicao, cor){
     tabuleiro[cont].splice(posicao, 1, cor)
 }
@@ -342,6 +358,7 @@ reset.addEventListener('click', function(){
     [36,37,28,39,40,41,42]
     ]
     document.getElementById('result').innerText = ''
+    player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
     })
     
 
