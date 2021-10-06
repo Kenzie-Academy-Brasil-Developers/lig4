@@ -21,6 +21,7 @@ body {
     height: 640px;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -30,6 +31,64 @@ body {
     background-size: 90%;
     background-position-x: -128%;
     background-position-y: 5%;
+}
+
+.header {
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 900;
+}
+
+.sectionWin{
+display: flex;
+justify-content: center;
+width: 40%;
+background-color:#e71d36;
+color: #588b8b;
+
+}
+
+.resultWin{
+
+}
+
+.score{
+display: none;
+justify-content: center;
+align-items: center;
+gap: 100px;
+margin-top: 0;
+position: absolute;
+top: 10%;
+transform: translateY(-10%);
+height: 50px;
+width:300px;
+}
+
+#score__scoreOne{
+    display: flex;
+    justify-content: center;
+}
+
+#score__scoreTwo{
+    display: flex;
+    justify-content: center;
+}
+
+.score1{
+background-color: red;
+color: #FFF;
+text-align: center;
+border-radius: 20px;
+width: 100px;
+}
+
+.score2{
+background-color: #000;
+color: #FFF;
+text-align: center;
+border-radius: 20px;
+width: 100px;
 }
 
 .main {
@@ -92,6 +151,21 @@ body {
     width: 45px;
     height: 45px;
     border: 1px solid blue;
+}
+
+.pokeballPlayer{
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.pokeball{
+    display: none;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-top: 20px;
+  
 }
 
 #pokeballStart {
