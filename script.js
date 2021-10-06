@@ -4,7 +4,7 @@ const mainContainer = document.querySelector('.main__container')
 const audio = document.querySelector('#pokeball_sound')
 const audio2 = document.querySelector('#musica_fundo')
 
-audio2.play()
+
 const information = () => {
     
     const menu = document.createElement('div');
@@ -68,6 +68,7 @@ buttonInstructions.addEventListener('click', () => {
 })
 
 buttonStart.addEventListener('click', () => {
+    audio2.play()
     mainContainer.innerHTML = '';
     buildPokeball();
 });
@@ -343,7 +344,6 @@ function winner(tabuleiro) {
                 textWinner(current)
                 scoreboard(current)
             }
-            
         }
     }
 
