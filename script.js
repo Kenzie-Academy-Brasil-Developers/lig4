@@ -292,6 +292,12 @@ function textWinner(currentPlayer) {
 
     text.innerText = '';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
+
+    const reset__button = document.createElement('button')
+    const reset = document.querySelector('#reset')
+    reset__button.id = 'reset__button'
+    reset__button.innerText = 'Reset'
+    reset.appendChild(reset__button)
 }
 
 function textDraw() {
@@ -310,6 +316,33 @@ function draw() {
     }
 }
 
-
+reset.addEventListener('click', function(){
+    jogador = true
+    cont = 5
+    cont2 = 5
+    cont3 = 5
+    cont4 = 5
+    cont5 = 5
+    cont6 = 5
+    cont7 = 5
+    let contReset = 5
+    for(let i = 0; i < 6; i ++){
+    for(let j = 0; j < 7; j ++){
+    document.getElementById('bloco' + i + '-' + j).style.background = 'transparent'
+    }
+    contReset --
+    }
+    
+    tabuleiro = [
+    [1,2,3,4,5,6,7],
+    [8,9,10,11,12,13,14],
+    [15,16,17,18,19,20,21],
+    [22,23,24,25,26,27,28],
+    [29,30,31,32,33,34,35],
+    [36,37,28,39,40,41,42]
+    ]
+    document.getElementById('result').innerText = ''
+    })
+    
 
 
