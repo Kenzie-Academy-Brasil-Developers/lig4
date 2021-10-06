@@ -33,20 +33,20 @@ const information = () => {
         optionsItem.classList.add('options__items');
         
         const navButton = document.createElement('button');
-        navButton.id = `button${c}`
+        navButton.id = `button${c}`;
         navButton.classList.add('menu__button');
 
         navButton.innerText = item;
         
-        optionsItem.appendChild(navButton)
+        optionsItem.appendChild(navButton);
 
         optionsList.appendChild(optionsItem);
 
         c++;
     });
 
-    menu.appendChild(menuTitle);
     menu.appendChild(menuImg);
+    menu.appendChild(menuTitle);
     menu.appendChild(menuParagraph);
     menu.appendChild(optionsList);
 
@@ -79,23 +79,38 @@ const buildInstructions = () => {
     const instructionsTitle = document.createElement('h2');
     instructionsTitle.innerText = 'Instruções do Jogo';
 
-    const instructionsParagraph = document.createElement('p');
-    instructionsParagraph.innerText = '';
+    const instructionsArray = ['No Lig-4, um jogador assume a Pokebola Vermelha e o outro assume a Pokebola Preta.',
+                               'Os jogadores se alternam inserindo as Pokebolas em uma das 7 colunas de uma tabela 6x7.',
+                               'O primeiro jogador que conseguir quatro de suas Pokebolas em uma linha (seja horizontal, vertical ou diagonal) vence.',
+                               'O jogo pode terminar em empate quando todas as células estiverem preenchidas e nenhum jogador conseguir quatro peças em linha.',
+                               ];
+
+    let c = 1;
 
     instructionsDiv.appendChild(instructionsTitle);
-    instructionsDiv.appendChild(instructionsParagraph);
+    
+    instructionsArray.forEach( item => {
+        const instructionsItem = document.createElement('p');
+        instructionsItem.classList.add('instructions__item')
+        instructionsItem.innerText = `${c}- ${item}`;
+
+        instructionsDiv.appendChild(instructionsItem);
+
+        c++;
+    });
+
+    
     instructionsDiv.appendChild(buttonStart);
     mainContainer.appendChild(instructionsDiv);
 
     buttonStart.addEventListener('click', () => {
         mainContainer.innerHTML = '';
+        mainContainer.style.animation = 'rising 5s';
         buildPokeball();
     }); 
 }
 
 const buildPokeball = () => {
-    mainContainer.style.animation = 'rising 5s';
-
     const nest = document.createElement('div');
     nest.id = 'pokeballStart';
 
@@ -361,13 +376,13 @@ function winner() {
     }
 }
 
-
 function textWinner(currentPlayer) {
 
     const text = document.getElementById('result')
 
     text.innerText = '';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
+    mainContainer.style.pointerEvents = 'none';
 }
 
 function textDraw() {
