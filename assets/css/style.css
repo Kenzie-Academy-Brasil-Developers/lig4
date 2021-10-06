@@ -67,6 +67,7 @@ width:300px;
 
 #score__scoreOne{
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -75,16 +76,18 @@ width:300px;
     justify-content: center;
 }
 
-.score1 {
-background-color: red;
+.score1{
+background-color: #f5193a77;
 color: #FFF;
+border: 1px solid #f51939;
 text-align: center;
 border-radius: 20px;
 width: 100px;
 }
 
-.score2 {
-background-color: #000;
+.score2{
+border: 1px solid black;
+background-color: rgba(0, 0, 0, 0.404);
 color: #FFF;
 text-align: center;
 border-radius: 20px;
@@ -249,7 +252,7 @@ width: 100px;
 
 #bloco0-6:hover{
     cursor: pointer;
-    background-color: #f51939;
+    background-color: #f5193ad2;
 }
 
 .blink_me {
@@ -293,6 +296,19 @@ width: 100px;
     }
 }
 
+#reset__button{
+    position: absolute;
+    bottom: 5%;
+    right: 36%;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 7px;
+}
+
 @keyframes rising {
     0% {
         opacity: 0;
@@ -300,5 +316,34 @@ width: 100px;
 
     100% {
         opacity: 1;
+    }
+}
+
+
+.rollout__animation{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/pokeball-mobile.png);
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
+}
+.rollout__animation2{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/ultraball-mobile.png);
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
+}
+
+
+@keyframes pokeball__rollout {
+    0% {
+        transform: translateY(-245px);
+        border: 1px solid rgba(0, 0, 255, 0);
+    }
+
+    100% {
+        transform: translateY(5px);
+        border: 1px solid rgba(0, 0, 255, 0);
     }
 }
