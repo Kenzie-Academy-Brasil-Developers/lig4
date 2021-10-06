@@ -140,7 +140,7 @@ body {
 
 #bloco0-6:hover{
     cursor: pointer;
-    background-color: #f51939;
+    background-color: #f5193ad2;
 }
 
 .blink_me {
@@ -182,4 +182,18 @@ body {
     100% {
         transform: translateY(10px);
     }
+}
+
+#reset{
+    margin: 0 auto;
+    text-align: center;    
+}
+#reset__button{
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 7px;
+    
 }

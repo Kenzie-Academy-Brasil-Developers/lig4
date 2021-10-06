@@ -266,6 +266,12 @@ function textWinner(currentPlayer) {
 
     text.innerText = '';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
+    const reset__button = document.createElement('button')
+    const reset = document.querySelector('#reset')
+    reset__button.id = 'reset__button'
+    reset__button.innerText = 'Reset'
+    reset.appendChild(reset__button)
+
 }
 
 function textDraw() {
@@ -286,4 +292,9 @@ function draw() {
     
     console.log(count)
 }
+
+reset.addEventListener('click', function(){
+    
+
+})
 
