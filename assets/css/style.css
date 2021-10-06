@@ -318,3 +318,32 @@ width: 100px;
         opacity: 1;
     }
 }
+
+
+.rollout__animation{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/pokeball-mobile.png);
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
+}
+.rollout__animation2{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/ultraball-mobile.png);
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
+}
+
+
+@keyframes pokeball__rollout {
+    0% {
+        transform: translateY(-245px);
+        border: 1px solid rgba(0, 0, 255, 0);
+    }
+
+    100% {
+        transform: translateY(5px);
+        border: 1px solid rgba(0, 0, 255, 0);
+    }
+}

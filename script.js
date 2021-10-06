@@ -131,7 +131,10 @@ const buildPokeball = () => {
 
         audio.play();
         main.className = 'blink_me';
-
+        mainContainer.style.pointerEvents = 'none';
+        setTimeout(() => {
+            mainContainer.style.pointerEvents = 'auto';
+        }, 2700);
         body.classList.add('body__background');
 
         mainContainer.append(generateGame());
@@ -184,7 +187,7 @@ const coluna = evt.target
 switch (coluna.id) {
     case 'bloco0-0':
         if(jogador){
-            document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont + '-0').className = 'rollout__animation'
             jogador = false
             winCondition(cont, 0, 'Player 1')
             winner(tabuleiro)
@@ -192,7 +195,7 @@ switch (coluna.id) {
             cont --
             
         }else{
-            document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont + '-0').className = 'rollout__animation2'
             jogador = true
             winCondition(cont, 0, 'Player 2')
             winner(tabuleiro)
@@ -204,7 +207,7 @@ switch (coluna.id) {
     break
     case 'bloco0-1':
         if(jogador){
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont2 + '-1').className = 'rollout__animation'
             jogador = false
             winCondition(cont2, 1, 'Player 1')
             winner(tabuleiro)
@@ -212,7 +215,7 @@ switch (coluna.id) {
            
             cont2 --
         }else{
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont2 + '-1').className = 'rollout__animation2'
             jogador = true
             winCondition(cont2, 1, 'Player 2')
             winner(tabuleiro)
@@ -224,7 +227,7 @@ switch (coluna.id) {
     break
     case 'bloco0-2':
         if(jogador){
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont3 + '-2').className = 'rollout__animation'
             jogador = false
             winCondition(cont3, 2, 'Player 1')
             winner(tabuleiro)
@@ -232,7 +235,7 @@ switch (coluna.id) {
            
             cont3 --
         }else{
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont3 + '-2').className = 'rollout__animation2'
             jogador = true
             winCondition(cont3, 2, 'Player 2')
             winner(tabuleiro)
@@ -244,14 +247,14 @@ switch (coluna.id) {
     break
     case 'bloco0-3':
         if(jogador){
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont4 + '-3').className = 'rollout__animation'
             jogador = false
             winCondition(cont4, 3, 'Player 1')
             winner(tabuleiro)
             draw()
             cont4 --
         }else{
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont4 + '-3').className = 'rollout__animation2'
             jogador = true
             winCondition(cont4, 3, 'Player 2')
             winner(tabuleiro)
@@ -263,14 +266,14 @@ switch (coluna.id) {
     break
     case 'bloco0-4':
         if(jogador){
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont5 + '-4').className = 'rollout__animation'
             jogador = false
             winCondition(cont5, 4, 'Player 1')
             winner(tabuleiro)
             draw()
             cont5 --
         }else{
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont5 + '-4').className = 'rollout__animation2'
             jogador = true
             winCondition(cont5, 4, 'Player 2')
             winner(tabuleiro)
@@ -281,14 +284,14 @@ switch (coluna.id) {
     break
     case 'bloco0-5':
         if(jogador){
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont6 + '-5').className = 'rollout__animation'
             jogador = false
             winCondition(cont6, 5, 'Player 1')
             winner(tabuleiro)
             draw()
             cont6 --
         }else{
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont6 + '-5').className = 'rollout__animation2'
             jogador = true
             winCondition(cont6, 5, 'Player 2')
             winner(tabuleiro)
@@ -299,14 +302,14 @@ switch (coluna.id) {
     break
     case 'bloco0-6':
         if(jogador){
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont7 + '-6').className = 'rollout__animation'
             jogador = false
             winCondition(cont7, 6, 'Player 1')
             winner(tabuleiro)
             draw()
             cont7 --
         }else{
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont7 + '-6').className = 'rollout__animation2'
             jogador = true
             winCondition(cont7, 6, 'Player 2')
             winner(tabuleiro)
@@ -477,6 +480,8 @@ reset.addEventListener('click', function(){
     player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
     textPlayerCurrent.innerText = 'Player 1';
     mainContainer.style.pointerEvents = 'auto';
+    mainContainer.innerHTML = ''
+    generateGame()
 })
     
 
