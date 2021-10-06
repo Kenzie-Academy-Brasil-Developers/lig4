@@ -75,7 +75,7 @@ width:300px;
     justify-content: center;
 }
 
-.score1{
+.score1 {
 background-color: red;
 color: #FFF;
 text-align: center;
@@ -83,7 +83,7 @@ border-radius: 20px;
 width: 100px;
 }
 
-.score2{
+.score2 {
 background-color: #000;
 color: #FFF;
 text-align: center;

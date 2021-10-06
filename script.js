@@ -10,24 +10,47 @@ const information = () => {
     const menu = document.createElement('div');
     menu.classList.add('menu-game');
 
-    const menuTitle = document.createElement('h1');
-    menuTitle.classList.add('menu-game__title')
-    menuTitle.innerText = 'Lig4';
-
     const menuImg = document.createElement('img');
     menuImg.classList.add('menu-game__img');
     menuImg.src = './assets/css/images/pokemon-logo.png';
 
+    const menuTitle = document.createElement('h1');
+    menuTitle.classList.add('menu-game__title')
+    menuTitle.innerText = 'Lig4';
+
+    const inputNameTitle = document.createElement('h2');
+    inputNameTitle.innerText = 'Insira os Nomes dos Jogadores:';
+
     const menuParagraph = document.createElement('p');
     menuParagraph.innerText = 'Seja bem-vindo(a)!';
 
+    const inputNameForm = document.createElement('form');
+
+    const inputArray = ['Jogador 1',
+                        'Jogador 2'
+                       ];
+
+    let c = 1;
+
+    inputArray.forEach( item => {
+        const input = document.createElement('input');
+        input.id = `player${c}`;
+        input.placeholder = item;
+        input.maxLength = '8';
+
+        inputNameForm.appendChild(input);
+
+        c++;
+    })
+
     const optionsList = document.createElement('ul');
-    optionsList.classList.add('menu-game__button-nest')
+    optionsList.classList.add('menu-game__button-nest');
 
     const optionsArray = ['Instruções',
                           'Start >'
                          ];
-    let c = 0;
+
+    c = 0;
 
     optionsArray.forEach( item => {
         const optionsItem = document.createElement('li');
@@ -49,6 +72,8 @@ const information = () => {
     menu.appendChild(menuImg);
     menu.appendChild(menuTitle);
     menu.appendChild(menuParagraph);
+    menu.appendChild(inputNameTitle);
+    menu.appendChild(inputNameForm);
     menu.appendChild(optionsList);
 
     mainContainer.appendChild(menu);
@@ -60,13 +85,25 @@ window.onload = () => {
     mainContainer.style.animation = 'rising 5s';
 };
 
+const player1Name = document.getElementById('player1');
+const player2Name = document.getElementById('player2');
+
+const playerName = (name, player) => {
+    if (name.value === '') {
+        return `Player ${player}`;
+
+    } else if (name.value !== '') {
+        return name.value;
+    }
+}
+
 const buttonInstructions = document.getElementById('button0');
 const buttonStart = document.getElementById('button1');
 
 buttonInstructions.addEventListener('click', () => {
     mainContainer.innerHTML = '';
     buildInstructions();
-})
+});
 
 buttonStart.addEventListener('click', () => {
     mainContainer.innerHTML = '';
@@ -106,9 +143,14 @@ const buildInstructions = () => {
 
     buttonStart.addEventListener('click', () => {
         mainContainer.innerHTML = '';
+        mainContainer.style.animation = '';
+        mainContainer.style.animation = 'rising 3s';
         buildPokeball();
     }); 
 }
+
+let scoreOneTitle = document.querySelector('.score1').innerHTML;
+let scoreTwoTitle = document.querySelector('.score2').innerHTML;
 
 const buildPokeball = () => {
     const nest = document.createElement('div');
@@ -136,6 +178,12 @@ const buildPokeball = () => {
 
         pokeballCurrent.style.display = 'flex';
         score.style.display = 'flex';
+
+        scoreOneTitle = playerName(player1Name, 1) + scoreOneTitle;
+        document.querySelector('.score1').innerHTML = scoreOneTitle;
+
+        scoreTwoTitle = playerName(player2Name, 2) + scoreTwoTitle;
+        document.querySelector('.score2').innerHTML = scoreTwoTitle;
     });
 }
 
@@ -160,11 +208,12 @@ const generateGame = () => {
 }
 
 const pokeballCurrent = document.querySelector('#pokeballCurrent')
-const player = document.createElement('div');
 const textPlayerCurrent = document.createElement('p');
+
+const player = document.createElement('div');
 player.classList.add('pokeballPlayer');
 player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
-textPlayerCurrent.innerText = 'Player 1';
+
 pokeballCurrent.appendChild(player);
 pokeballCurrent.appendChild(textPlayerCurrent);
 
@@ -314,18 +363,18 @@ switch (coluna.id) {
         }
         
     break
-   
   }
 
-  if (jogador) {
+    const player1 = playerName(player1Name, 1);
+    const player2 = playerName(player2Name, 2);
 
+  if (jogador) {
     player.style.backgroundImage =  "url('assets/css/images/minpokeball.png')"
-    
-    textPlayerCurrent.innerText = 'Player 1';
+    textPlayerCurrent.innerText = player1;
 
     } else {
     player.style.backgroundImage =  "url('assets/css/images/minultraball.png')"
-    textPlayerCurrent.innerText = 'Player 2';
+    textPlayerCurrent.innerText = player2;
     }
 })
 
@@ -356,7 +405,12 @@ function winner(tabuleiro) {
             let current =  tabuleiro[i][j]
 
             if(current !== 0 && current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
-                textWinner(current)
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+                
                 scoreboard(current)
             }
             
@@ -370,7 +424,12 @@ function winner(tabuleiro) {
             let current = tabuleiro[i][j]
 
             if (current !== 0 && current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j]) {
-                textWinner(current)
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+                
                 scoreboard(current)
             }     
         }
@@ -383,7 +442,12 @@ function winner(tabuleiro) {
             let current = tabuleiro[i][j]
 
             if (current !== 0 && current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]) {
-                textWinner(current)
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+                
                 scoreboard(current)
             }
         }
@@ -396,9 +460,13 @@ function winner(tabuleiro) {
             let current = tabuleiro[i][j]
 
             if (current !== 0 && current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
-                textWinner(current)
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+
                 scoreboard(current)
-              
             }
         }
     }
@@ -428,7 +496,6 @@ function draw() {
         textDraw()
     }
 }
-
 
 let scoreboardOne = 0;
 let scoreboardTwo = 0;
