@@ -443,6 +443,7 @@ function winCondition(cont, posicao, cor){
     tabuleiro[cont].splice(posicao, 1, cor)
 }
 
+let indexArr = []
 function winner(tabuleiro) {
     const coluna = tabuleiro[0].length - 3
     const linha = tabuleiro.length - 3
@@ -452,7 +453,7 @@ function winner(tabuleiro) {
         for(let j = 0; j < coluna; j++) {
            
             let current =  tabuleiro[i][j]
-
+            
             if(current !== 0 && current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
                 if (current === 'Player 1') {
                     textWinner(playerName(player1Name, 1));
@@ -461,6 +462,9 @@ function winner(tabuleiro) {
                 }
                 
                 scoreboard(current)
+                indexArr.push(i,j,i,j+1,i,j+2,i,j+3)
+                colorPokeballWin(indexArr)
+                
             }
         }
     }
@@ -479,6 +483,9 @@ function winner(tabuleiro) {
                 }
                 
                 scoreboard(current)
+                indexArr.push(i,j,i+1,j,i+2,j,i+3,j)
+                colorPokeballWin(indexArr)
+               
             }     
         }
     }
@@ -497,6 +504,8 @@ function winner(tabuleiro) {
                 }
                 
                 scoreboard(current)
+                indexArr.push(i,j,i+1,j+1,i+2,j+2,i+3,j+3)
+                colorPokeballWin(indexArr)
             }
         }
     }
@@ -515,6 +524,8 @@ function winner(tabuleiro) {
                 }
 
                 scoreboard(current)
+                indexArr.push(i,j,i-1,j+1,i-2,j+2,i-3,j+3)
+                colorPokeballWin(indexArr)
             }
         }
     }
@@ -557,6 +568,24 @@ function draw() {
         textDraw()
     }
 }
+
+
+function colorPokeballWin(array){
+    let first = document.getElementsByClassName('linha')[array[0]].childNodes[array[1]]
+    let second = document.getElementsByClassName('linha')[array[2]].childNodes[array[3]]
+    let third = document.getElementsByClassName('linha')[array[4]].childNodes[array[5]]
+    let fourth = document.getElementsByClassName('linha')[array[6]].childNodes[array[7]]
+    let arr = [first,second,third,fourth];
+   arr.forEach(index =>{
+    index.classList.add('colorWinner')
+   })
+   
+      
+    console.log(array)
+    array.splice(0,array.length)
+    console.log(array)
+}
+
 
 reset.addEventListener('click', function(){
     audio_menu.volume = 0.1

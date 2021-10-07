@@ -470,3 +470,26 @@ margin-top: 20px;
                  -1px  1px 0 #f5193a,
                   1px  1px 0 #f5193a;
 }
+
+.colorWinner{
+    animation: colorOpacity 4s infinite;
+
+}
+
+@keyframes colorOpacity {
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
