@@ -16,21 +16,22 @@ html, body {
 body {
     font-size: 16px;
     font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
-    /* background-color: #4f4f51; */
     background-color: #FFF;
-    height: 640px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .body__background {
-    background-image: url(images/rocketBack2.jpg);
-    background-size: 90%;
-    background-position-x: -128%;
-    background-position-y: 5%;
+    background-color: #424242;
+    background-image: url(./images/r.png);
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position-x: 50%;
+    background-position-y: 50%;
 }
 
 .header {
@@ -40,32 +41,39 @@ body {
 }
 
 .sectionWin{
-display: flex;
-justify-content: center;
-width: 40%;
-background-color:#e71d36;
-color: #588b8b;
+    display: flex;
+    justify-content: center;
+    background-color:#e71d36;
+    color: #588b8b;
 
 }
 
-.resultWin{
+#win {
+    height: 20px;
+    width: 300px;
+}
 
+#result {
+    display: none;
+    background: rgba(128, 128, 128, 0.493);
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: -1px -1px 0 #01FF70, 
+                  1px -1px 0 #01FF70,
+                 -1px  1px 0 #01FF70,
+                  1px  1px 0 #01FF70;
 }
 
 .score {
-display: none;
-justify-content: center;
-align-items: center;
-gap: 100px;
-margin-top: 0;
-position: absolute;
-top: 10%;
-transform: translateY(-10%);
-height: 50px;
-width:300px;
+    height: 50px;
+    width: 300px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#score__scoreOne {
+.score__span {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,21 +81,9 @@ width:300px;
     font-weight: bold;
     margin-top: 4px;
     font-size: 1.1rem;
-
 }
 
-#score__scoreTwo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    margin-top: 4px;
-    font-size: 1.1rem;
-
-}
-
-.score1{
+.score1 {
 background-color: #f5193a77;
 color: #FFF;
 border: 1px solid #f51939;
@@ -122,7 +118,6 @@ padding: 05px
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0 auto;
     width: 329px;
 }
 
@@ -164,7 +159,6 @@ padding: 05px
 
 .linha {
     display: flex;
-    margin: 0 auto;
 }
 
 .linha__bloco {
@@ -173,19 +167,35 @@ padding: 05px
     border: 1px solid blue;
 }
 
-.pokeballPlayer{
-    background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
+.pokeball {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
 }
 
-.pokeball{
-    display: none;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin-top: 20px;
-  
+.pokeballPlayer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.current-pokeball {
+    width: 30px;
+    margin-bottom: 10px;
+}
+
+.pokeballPlayer p {
+    color: white;
+        margin-top: 0px;
+        font-weight: bold;
+        font-size: 1.3rem;
+        text-shadow: -1px -1px 0 #f5193a, 
+                  1px -1px 0 #f5193a,
+                 -1px  1px 0 #f5193a,
+                  1px  1px 0 #f5193a;
 }
 
 #pokeballStart {
@@ -205,12 +215,12 @@ padding: 05px
 
 
 #pokeballStart:before {
-        position: absolute;
-        content: "";
-        height: 15px;
-        width: 200px;
-        background-color: #242633;
-        top: 95.5px;
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 200px;
+    background-color: #242633;
+    top: 95.5px;
 }
 
 #generateGame{
@@ -222,8 +232,6 @@ padding: 05px
     font-size: 1.5rem;
     font-weight: 900;
 }
-
-
 
 #generateGame:hover{
     color: white;
@@ -275,6 +283,46 @@ padding: 05px
 .blink_me {
     animation: blinker 2.5s linear;
 }
+
+#reset {
+    width: 100px;
+    height: 50px;
+}
+
+#reset__button {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 2px double #f5193a;
+    border-radius: 7px;
+    font-family: 'Free Pixel';
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-shadow: 
+   -1px -1px 0 #f5193a, 
+    1px -1px 0 #f5193a,
+   -1px  1px 0 #f5193a,
+    1px  1px 0 #f5193a;
+}
+
+.rollout__animation{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/pokeball-mobile.png);
+    background-repeat: no-repeat;
+    background-size: 45px 45px;
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
+}
+.rollout__animation2{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/ultraball-mobile.png);
+    background-repeat: no-repeat;
+    background-size: 45px 45px;
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
+}
   
   @keyframes blinker {
     100% {
@@ -313,25 +361,7 @@ padding: 05px
     }
 }
 
-#reset__button{
-    position: absolute;
-    bottom: 5%;
-    right: 36%;
-    text-align: center;
-    width: 100px;
-    height: 30px;
-    background-color: transparent;
-    color: white;
-    border: 2px double #f5193a;
-    border-radius: 7px;
-    font-family: 'Free Pixel';
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-shadow: -1px -1px 0 #f5193a, 
-    1px -1px 0 #f5193a,
-   -1px  1px 0 #f5193a,
-    1px  1px 0 #f5193a;
-}
+
 
 @keyframes rising {
     0% {
@@ -342,23 +372,6 @@ padding: 05px
         opacity: 1;
     }
 }
-
-
-.rollout__animation{
-    width: 45px;
-    height: 45px;
-    background-image: url(images/pokeball-mobile.png);
-    animation: pokeball__rollout 1s;
-    border: 0.5px solid blue;
-}
-.rollout__animation2{
-    width: 45px;
-    height: 45px;
-    background-image: url(images/ultraball-mobile.png);
-    animation: pokeball__rollout 1s;
-    border: 0.5px solid blue;
-}
-
 
 @keyframes pokeball__rollout {
     0% {
@@ -371,30 +384,83 @@ padding: 05px
         border: 1px solid rgba(0, 0, 255, 0);
     }
 }
-#result {
-    position: absolute;
-    top: 5px;
-    right: 30px;
-    background: rgba(128, 128, 128, 0.493);
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-shadow: -1px -1px 0 #01FF70, 
-                  1px -1px 0 #01FF70,
-                 -1px  1px 0 #01FF70,
-                  1px  1px 0 #01FF70;
+
+@media (min-width: 768px) {
+    #win {
+        height: 30px;
+        width: 390px;
+        text-align: center;
+    }
+
+    #result {
+        font-size: 1.5rem;
+        padding: 5px;
+        border-radius: 7px;
+    }
+
+    .score {
+        height: 80px;
+        width: 500px;
+        justify-content: space-between;
+        font-size: 1.5rem;
+    }
+
+    .score__span {
+        font-size: 1.5rem;
+    }
+
+    .score1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+    }
+
+    .score2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+    }
+
+    .blink_me {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .linha__bloco {
+        width: 80px;
+        height: 80px;
+    }
+
+    .rollout__animation {
+        width: 80px;
+        height: 80px;
+        background-size: 80px 80px;
+    }
+
+    .rollout__animation2 {
+        width: 80px;
+        height: 80px;
+        background-size: 80px 80px;
+    }
+
+    .current-pokeball {
+        width: 50px;
+    }
+
+    .pokeballPlayer p {
+        font-size: 2rem;
+    }
+
+    #reset__button {
+        font-size: 1.8rem;
+        padding: 10px;
+    }
 }
 
-.pokeball p {
-        color: white;
-        margin-top: 0px;
-        position: absolute;
-        bottom: 122px;
-        font-weight: bold;
-        font-size: 1.3rem;
 
-        text-shadow: -1px -1px 0 #f5193a, 
-                  1px -1px 0 #f5193a,
-                 -1px  1px 0 #f5193a,
-                  1px  1px 0 #f5193a;
-}
+
