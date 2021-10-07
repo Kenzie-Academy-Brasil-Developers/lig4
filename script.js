@@ -6,7 +6,7 @@ const audio = document.querySelector('#pokeball_sound')
 const audio2 = document.querySelector('#musica_fundo')
 const audio_vitoria = document.querySelector('#musica_vitoria')
 const audio_menu = document.querySelector('#audio_menu')
-document.getElementById("result").style.border = 'none'
+
 
 
 const information = () => {
@@ -105,13 +105,14 @@ const buttonInstructions = document.getElementById('button0');
 const buttonStart = document.getElementById('button1');
 
 buttonInstructions.addEventListener('click', () => {
+    audio_menu.volume = 0.1
     audio_menu.play()
-    audio_menu.volume = 0.15
     mainContainer.innerHTML = '';
     buildInstructions();
 });
 
 buttonStart.addEventListener('click', () => {
+    audio_menu.volume = 0.1
     audio_menu.play()
     audio2.volume = 0.1
     audio2.play()
@@ -511,7 +512,6 @@ function winner(tabuleiro) {
 
 function textWinner(currentPlayer) {
     const text = document.getElementById('result')
-    text.style.border = '1px solid #f51939'
     text.innerText = '';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
     audio_vitoria.volume = 0.15
@@ -528,7 +528,6 @@ function textWinner(currentPlayer) {
 
 function textDraw() {
     const text = document.getElementById('result');
-    text.style.border = '1px solid #f51939'
     text.innerText  = '';
     text.innerText  = 'Houve um empate'
 }
@@ -543,6 +542,7 @@ function draw() {
 }
 
 reset.addEventListener('click', function(){
+    audio_menu.volume = 0.1
     audio_menu.play()
     jogador = true
     count = 0
@@ -553,14 +553,6 @@ reset.addEventListener('click', function(){
     cont5 = 5
     cont6 = 5
     cont7 = 5
-    let contReset = 5
-
-    for(let i = 0; i < 6; i ++){
-        for(let j = 0; j < 7; j ++) {
-            document.getElementById('bloco' + i + '-' + j).style.background = 'transparent'
-        }
-        contReset --
-    }
     
     tabuleiro = [
     [1,2,3,4,5,6,7],
@@ -572,7 +564,6 @@ reset.addEventListener('click', function(){
     ]
 
     document.getElementById('result').innerText = ''
-    document.getElementById("result").style.border = 'none'
     player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
     textPlayerCurrent.innerText = playerName(player1Name, 1);
     mainContainer.style.pointerEvents = 'auto';

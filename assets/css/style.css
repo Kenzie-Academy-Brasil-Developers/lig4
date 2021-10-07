@@ -69,11 +69,22 @@ width:300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 4px;
+    font-size: 1.1rem;
+
 }
 
 #score__scoreTwo {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 4px;
+    font-size: 1.1rem;
+
 }
 
 .score1{
@@ -83,6 +94,9 @@ border: 1px solid #f51939;
 text-align: center;
 border-radius: 20px;
 width: 100px;
+font-weight: bold;
+padding: 05px
+
 }
 
 .score2{
@@ -92,6 +106,9 @@ color: #FFF;
 text-align: center;
 border-radius: 20px;
 width: 100px;
+font-weight: bold;
+padding: 05px
+
 }
 
 .main {
@@ -305,10 +322,15 @@ width: 100px;
     height: 30px;
     background-color: transparent;
     color: white;
-    border: 1px solid white;
+    border: 2px double #f5193a;
     border-radius: 7px;
     font-family: 'Free Pixel';
-    font-size: 16px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #f5193a, 
+    1px -1px 0 #f5193a,
+   -1px  1px 0 #f5193a,
+    1px  1px 0 #f5193a;
 }
 
 @keyframes rising {
@@ -352,8 +374,27 @@ width: 100px;
 #result {
     position: absolute;
     top: 5px;
-    right: 50px;
+    right: 30px;
     background: rgba(128, 128, 128, 0.493);
-    border: 1px solid red;
     color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: -1px -1px 0 #01FF70, 
+                  1px -1px 0 #01FF70,
+                 -1px  1px 0 #01FF70,
+                  1px  1px 0 #01FF70;
+}
+
+.pokeball p {
+        color: white;
+        margin-top: 0px;
+        position: absolute;
+        bottom: 122px;
+        font-weight: bold;
+        font-size: 1.3rem;
+
+        text-shadow: -1px -1px 0 #f5193a, 
+                  1px -1px 0 #f5193a,
+                 -1px  1px 0 #f5193a,
+                  1px  1px 0 #f5193a;
 }
