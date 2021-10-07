@@ -31,8 +31,8 @@ const information = () => {
     const inputNameForm = document.createElement('form');
     inputNameForm.classList.add('menu-game__form')
 
-    const inputArray = ['Jogador 1',
-                        'Jogador 2'
+    const inputArray = ['Player 1',
+                        'Player 2'
                        ];
 
     let c = 1;
