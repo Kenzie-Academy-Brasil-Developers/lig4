@@ -31,6 +31,7 @@ body {
     background-size: 90%;
     background-position-x: -128%;
     background-position-y: 5%;
+    overflow: hidden;
 }
 
 .header {
@@ -48,6 +49,9 @@ color: #588b8b;
 
 }
 
+.resultWin{
+
+}
 
 .score{
 display: none;
@@ -64,6 +68,7 @@ width:300px;
 
 #score__scoreOne{
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -73,15 +78,17 @@ width:300px;
 }
 
 .score1{
-background-color: red;
+background-color: #f5193a77;
 color: #FFF;
+border: 1px solid #f51939;
 text-align: center;
 border-radius: 20px;
 width: 100px;
 }
 
 .score2{
-background-color: #000;
+border: 1px solid black;
+background-color: rgba(0, 0, 0, 0.404);
 color: #FFF;
 text-align: center;
 border-radius: 20px;
@@ -106,28 +113,98 @@ width: 100px;
 /* Estilização do Menu - Início */
 .menu-game {
     font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .menu-game__title {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 900;
+    margin-bottom: 20px;
 }
 
 .menu-game__img {
-    width: 160px;
+    width: 80%;
     font-family: 'Pokemon Hollow';
 }
 
 .menu-game__button-nest {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    margin-top: 20px;
+    /* width: 80%; */
+}
+
+.menu-game__titleH2{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.menu-game__paragraph{
+    font-size: 1.2rem;
 }
 
 .menu__button {
     border: none;
     font-family: 'Free Pixel';
     padding: 5px;
+    font-size: 1.1rem;
+    color: #FFF;
+    background-color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 1px 3px black;
+}
+
+#button1{
+    animation: hoverButton 0.9s infinite;
+    
+}
+
+
+
+@keyframes hoverButton {
+    
+    0%{
+        opacity: 1;
+    }
+
+    50%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+
+#player1{
+    border:2px groove red;
+    font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+}
+
+#player1:focus{
+    border:2px groove red;
+}
+
+#player2{
+    border:2px groove black;
+    font-family: 'Free Pixel', Arial, Helvetica, sans-serif;  
+    font-size: 1.1rem;
+}
+
+.menu-game__form{
+height: 60px;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+margin-top: 20px;
 }
 
 .instructions__div {
@@ -314,31 +391,30 @@ width: 100px;
 }
 
 
-.colorWinner{
-    background-color: green;
-    animation: colorOpacity 4s infinite;
+.rollout__animation{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/pokeball-mobile.png);
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
+}
+.rollout__animation2{
+    width: 45px;
+    height: 45px;
+    background-image: url(images/ultraball-mobile.png);
+    animation: pokeball__rollout 1s;
+    border: 0.5px solid blue;
 }
 
 
-@keyframes colorOpacity {
-    
-    0%{
-        opacity: 1;
+@keyframes pokeball__rollout {
+    0% {
+        transform: translateY(-245px);
+        border: 1px solid rgba(0, 0, 255, 0);
     }
 
-    25%{
-        opacity: 0;
-    }
-
-    50%{
-        opacity: 1;
-    }
-
-    75%{
-        opacity: 0;
-    }
-
-    100%{
-        opacity: 1;
+    100% {
+        transform: translateY(5px);
+        border: 1px solid rgba(0, 0, 255, 0);
     }
 }

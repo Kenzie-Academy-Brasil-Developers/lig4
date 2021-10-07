@@ -11,24 +11,50 @@ const information = () => {
     const menu = document.createElement('div');
     menu.classList.add('menu-game');
 
-    const menuTitle = document.createElement('h1');
-    menuTitle.classList.add('menu-game__title')
-    menuTitle.innerText = 'Lig4';
-
     const menuImg = document.createElement('img');
     menuImg.classList.add('menu-game__img');
     menuImg.src = './assets/css/images/pokemon-logo.png';
 
+    const menuTitle = document.createElement('h1');
+    menuTitle.classList.add('menu-game__title')
+    menuTitle.innerText = 'Lig4';
+
+    const inputNameTitle = document.createElement('h2');
+    inputNameTitle.classList.add('menu-game__titleH2')
+    inputNameTitle.innerText = 'Insira os Nomes dos Jogadores:';
+
     const menuParagraph = document.createElement('p');
+    menuParagraph.classList.add('menu-game__paragraph')
     menuParagraph.innerText = 'Seja bem-vindo(a)!';
 
+    const inputNameForm = document.createElement('form');
+    inputNameForm.classList.add('menu-game__form')
+
+    const inputArray = ['Jogador 1',
+                        'Jogador 2'
+                       ];
+
+    let c = 1;
+
+    inputArray.forEach( item => {
+        const input = document.createElement('input');
+        input.id = `player${c}`;
+        input.placeholder = item;
+        input.maxLength = '8';
+
+        inputNameForm.appendChild(input);
+
+        c++;
+    })
+
     const optionsList = document.createElement('ul');
-    optionsList.classList.add('menu-game__button-nest')
+    optionsList.classList.add('menu-game__button-nest');
 
     const optionsArray = ['Instruções',
                           'Start >'
                          ];
-    let c = 0;
+
+    c = 0;
 
     optionsArray.forEach( item => {
         const optionsItem = document.createElement('li');
@@ -51,6 +77,8 @@ const information = () => {
     menu.appendChild(menuImg);
     menu.appendChild(menuTitle);
     menu.appendChild(menuParagraph);
+    menu.appendChild(inputNameTitle);
+    menu.appendChild(inputNameForm);
     menu.appendChild(optionsList);
 
     mainContainer.appendChild(menu);
@@ -62,13 +90,25 @@ window.onload = () => {
     mainContainer.style.animation = 'rising 5s';
 };
 
+const player1Name = document.getElementById('player1');
+const player2Name = document.getElementById('player2');
+
+const playerName = (name, player) => {
+    if (name.value === '') {
+        return `Player ${player}`;
+
+    } else if (name.value !== '') {
+        return name.value;
+    }
+}
+
 const buttonInstructions = document.getElementById('button0');
 const buttonStart = document.getElementById('button1');
 
 buttonInstructions.addEventListener('click', () => {
     mainContainer.innerHTML = '';
     buildInstructions();
-})
+});
 
 buttonStart.addEventListener('click', () => {
     audio2.play()
@@ -109,9 +149,14 @@ const buildInstructions = () => {
 
     buttonStart.addEventListener('click', () => {
         mainContainer.innerHTML = '';
+        mainContainer.style.animation = '';
+        mainContainer.style.animation = 'rising 3s';
         buildPokeball();
     }); 
 }
+
+let scoreOneTitle = document.querySelector('.score1').innerHTML;
+let scoreTwoTitle = document.querySelector('.score2').innerHTML;
 
 const buildPokeball = () => {
     const nest = document.createElement('div');
@@ -130,13 +175,22 @@ const buildPokeball = () => {
 
         audio.play();
         main.className = 'blink_me';
-
+        mainContainer.style.pointerEvents = 'none';
+        setTimeout(() => {
+            mainContainer.style.pointerEvents = 'auto';
+        }, 2700);
         body.classList.add('body__background');
 
         mainContainer.append(generateGame());
 
         pokeballCurrent.style.display = 'flex';
         score.style.display = 'flex';
+
+        scoreOneTitle = playerName(player1Name, 1) + scoreOneTitle;
+        document.querySelector('.score1').innerHTML = scoreOneTitle;
+
+        scoreTwoTitle = playerName(player2Name, 2) + scoreTwoTitle;
+        document.querySelector('.score2').innerHTML = scoreTwoTitle;
     });
 }
 
@@ -158,15 +212,15 @@ const generateGame = () => {
             linha.appendChild(bloco)
         }
     }
-
 }
 
 const pokeballCurrent = document.querySelector('#pokeballCurrent')
-const player = document.createElement('div');
 const textPlayerCurrent = document.createElement('p');
+
+const player = document.createElement('div');
 player.classList.add('pokeballPlayer');
 player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
-textPlayerCurrent.innerText = 'Player 1';
+
 pokeballCurrent.appendChild(player);
 pokeballCurrent.appendChild(textPlayerCurrent);
 
@@ -184,7 +238,7 @@ const coluna = evt.target
 switch (coluna.id) {
     case 'bloco0-0':
         if(jogador){
-            document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont + '-0').className = 'rollout__animation'
             jogador = false
             winCondition(cont, 0, 'Player 1')
             winner(tabuleiro)
@@ -192,7 +246,7 @@ switch (coluna.id) {
             cont --
             
         }else{
-            document.getElementById('bloco' + cont + '-0').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont + '-0').className = 'rollout__animation2'
             jogador = true
             winCondition(cont, 0, 'Player 2')
             winner(tabuleiro)
@@ -204,7 +258,7 @@ switch (coluna.id) {
     break
     case 'bloco0-1':
         if(jogador){
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont2 + '-1').className = 'rollout__animation'
             jogador = false
             winCondition(cont2, 1, 'Player 1')
             winner(tabuleiro)
@@ -212,7 +266,7 @@ switch (coluna.id) {
            
             cont2 --
         }else{
-            document.getElementById('bloco' + cont2 + '-1').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont2 + '-1').className = 'rollout__animation2'
             jogador = true
             winCondition(cont2, 1, 'Player 2')
             winner(tabuleiro)
@@ -224,7 +278,7 @@ switch (coluna.id) {
     break
     case 'bloco0-2':
         if(jogador){
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont3 + '-2').className = 'rollout__animation'
             jogador = false
             winCondition(cont3, 2, 'Player 1')
             winner(tabuleiro)
@@ -232,7 +286,7 @@ switch (coluna.id) {
            
             cont3 --
         }else{
-            document.getElementById('bloco' + cont3 + '-2').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont3 + '-2').className = 'rollout__animation2'
             jogador = true
             winCondition(cont3, 2, 'Player 2')
             winner(tabuleiro)
@@ -244,14 +298,14 @@ switch (coluna.id) {
     break
     case 'bloco0-3':
         if(jogador){
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont4 + '-3').className = 'rollout__animation'
             jogador = false
             winCondition(cont4, 3, 'Player 1')
             winner(tabuleiro)
             draw()
             cont4 --
         }else{
-            document.getElementById('bloco' + cont4 + '-3').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont4 + '-3').className = 'rollout__animation2'
             jogador = true
             winCondition(cont4, 3, 'Player 2')
             winner(tabuleiro)
@@ -263,14 +317,14 @@ switch (coluna.id) {
     break
     case 'bloco0-4':
         if(jogador){
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont5 + '-4').className = 'rollout__animation'
             jogador = false
             winCondition(cont5, 4, 'Player 1')
             winner(tabuleiro)
             draw()
             cont5 --
         }else{
-            document.getElementById('bloco' + cont5 + '-4').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont5 + '-4').className = 'rollout__animation2'
             jogador = true
             winCondition(cont5, 4, 'Player 2')
             winner(tabuleiro)
@@ -281,14 +335,14 @@ switch (coluna.id) {
     break
     case 'bloco0-5':
         if(jogador){
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont6 + '-5').className = 'rollout__animation'
             jogador = false
             winCondition(cont6, 5, 'Player 1')
             winner(tabuleiro)
             draw()
             cont6 --
         }else{
-            document.getElementById('bloco' + cont6 + '-5').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont6 + '-5').className = 'rollout__animation2'
             jogador = true
             winCondition(cont6, 5, 'Player 2')
             winner(tabuleiro)
@@ -299,14 +353,14 @@ switch (coluna.id) {
     break
     case 'bloco0-6':
         if(jogador){
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/pokeball-mobile.png')"
+            document.getElementById('bloco' + cont7 + '-6').className = 'rollout__animation'
             jogador = false
             winCondition(cont7, 6, 'Player 1')
             winner(tabuleiro)
             draw()
             cont7 --
         }else{
-            document.getElementById('bloco' + cont7 + '-6').style.backgroundImage = "url('assets/css/images/ultraball-mobile.png')"
+            document.getElementById('bloco' + cont7 + '-6').className = 'rollout__animation2'
             jogador = true
             winCondition(cont7, 6, 'Player 2')
             winner(tabuleiro)
@@ -315,18 +369,18 @@ switch (coluna.id) {
         }
         
     break
-   
   }
 
-  if (jogador) {
+    const player1 = playerName(player1Name, 1);
+    const player2 = playerName(player2Name, 2);
 
+  if (jogador) {
     player.style.backgroundImage =  "url('assets/css/images/minpokeball.png')"
-    
-    textPlayerCurrent.innerText = 'Player 1';
+    textPlayerCurrent.innerText = player1;
 
     } else {
     player.style.backgroundImage =  "url('assets/css/images/minultraball.png')"
-    textPlayerCurrent.innerText = 'Player 2';
+    textPlayerCurrent.innerText = player2;
     }
 })
 
@@ -359,14 +413,9 @@ function winCondition(cont, posicao, cor){
     tabuleiro[cont].splice(posicao, 1, cor)
 }
 
-let indexArr = []
-
 function winner(tabuleiro) {
     const coluna = tabuleiro[0].length - 3
     const linha = tabuleiro.length - 3
-
-  
-    
 
     for (let i = 0 ; i < tabuleiro.length; i++) {
 
@@ -374,11 +423,14 @@ function winner(tabuleiro) {
            
             let current =  tabuleiro[i][j]
 
-            if(current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
-                textWinner(current)
+            if(current !== 0 && current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+                
                 scoreboard(current)
-                indexArr.push(i,j,i,j+1,i,j+2,i,j+3)
-                colorPokeballWin(indexArr)
             }
         }
     }
@@ -389,11 +441,14 @@ function winner(tabuleiro) {
           
             let current = tabuleiro[i][j]
 
-            if (current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j]) {
-                textWinner(current)
+            if (current !== 0 && current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j]) {
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+                
                 scoreboard(current)
-                indexArr.push(i,j,i+1,j,i+2,j,i+3,j)
-                colorPokeballWin(indexArr)
             }     
         }
     }
@@ -404,35 +459,38 @@ function winner(tabuleiro) {
 
             let current = tabuleiro[i][j]
 
-            if (current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]) {
-                textWinner(current)
+            if (current !== 0 && current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]) {
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+                
                 scoreboard(current)
-                indexArr.push(i,j,i+1,j+1,i+2,j+2,i+3,j+3)
-                colorPokeballWin(indexArr)
             }
         }
     }
 
-    for (let i = 0; i < tabuleiro.length -2; i ++) {
+    for (let i = 3; i < tabuleiro.length; i ++) {
 
         for (let j = 0 ; j < coluna; j++) {
 
             let current = tabuleiro[i][j]
 
-            if (current === tabuleiro[i+1][j-1] && current === tabuleiro[i+2][j-2] && current === tabuleiro[i+3][j-3]){ 
-                textWinner(current)
+            if (current !== 0 && current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
+                if (current === 'Player 1') {
+                    textWinner(playerName(player1Name, 1));
+                } else {
+                    textWinner(playerName(player2Name, 2));
+                }
+
                 scoreboard(current)
-             
-                indexArr.push(i,j,i-1,j+1,i-2,j+2,i-3,j+3)
-                colorPokeballWin(indexArr)
-              
             }
         }
     }
 }
 
 function textWinner(currentPlayer) {
-
     const text = document.getElementById('result')
 
     text.innerText = '';
@@ -460,7 +518,6 @@ function draw() {
     if (count === 42) {
         textDraw()
     }
-    count = 0
 }
 
 reset.addEventListener('click', function(){
@@ -488,45 +545,12 @@ reset.addEventListener('click', function(){
     [29,30,31,32,33,34,35],
     [36,37,28,39,40,41,42]
     ]
+
     document.getElementById('result').innerText = ''
     player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
     textPlayerCurrent.innerText = 'Player 1';
     mainContainer.style.pointerEvents = 'auto';
-
- 
+    mainContainer.innerHTML = ''
+    generateGame()
 })
     
-
-function colorPokeballWin(array){
-  
-
-    let first = document.getElementsByClassName('linha')[array[0]].childNodes[array[1]]
-    let second = document.getElementsByClassName('linha')[array[2]].childNodes[array[3]]
-    let third = document.getElementsByClassName('linha')[array[4]].childNodes[array[5]]
-    let fourth = document.getElementsByClassName('linha')[array[6]].childNodes[array[7]]
-
-    let arr = [first,second,third,fourth];
-
-
-   arr.forEach(index =>{
-
-    index.classList.add('colorWinner')
-   })
-
-    
-
-    setTimeout(() => {
-
-      arr.forEach(index =>{
-
-        index.classList.remove('colorWinner')
-      })      
-
-    }, 4000);
-
-    console.log(array)
-    array.splice(0,array.length)
-    console.log(array)
-}
-
-console.log(tabuleiro.length)
