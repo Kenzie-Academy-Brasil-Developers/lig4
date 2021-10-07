@@ -70,6 +70,7 @@ const buttonStart = document.getElementById('button1');
 
 buttonInstructions.addEventListener('click', () => {
     audio_menu.play()
+    audio_menu.volume = 0.15
     mainContainer.innerHTML = '';
     buildInstructions();
 })
@@ -134,7 +135,7 @@ const buildPokeball = () => {
 
     startButton.addEventListener('click', () => {
         mainContainer.innerHTML = '';
-        audio.volume = 0.3
+        audio.volume = 0.15
         audio.play();
         main.className = 'blink_me';
         mainContainer.style.pointerEvents = 'none';
@@ -412,16 +413,16 @@ function winner(tabuleiro) {
         }
     }
 
-    for (let i = 2; i < tabuleiro.length; i ++) {
+    for (let i = 3; i < tabuleiro.length; i ++) {
 
         for (let j = 0 ; j < coluna; j++) {
 
             let current = tabuleiro[i][j]
 
-            if (current !== 0 && current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
+            if (current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
                 textWinner(current)
                 scoreboard(current)
-              
+            
             }
         }
     }
@@ -433,7 +434,7 @@ function textWinner(currentPlayer) {
     text.style.border = '1px solid #f51939'
     text.innerText = '';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
-    audio_vitoria.volume = 0.3
+    audio_vitoria.volume = 0.15
     audio_vitoria.play()
 
     const reset__button = document.createElement('button')
