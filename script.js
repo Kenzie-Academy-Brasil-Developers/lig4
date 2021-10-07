@@ -7,10 +7,7 @@ const audio2 = document.querySelector('#musica_fundo')
 const audio_vitoria = document.querySelector('#musica_vitoria')
 const audio_menu = document.querySelector('#audio_menu')
 
-
-
 const information = () => {
-    
     const menu = document.createElement('div');
     menu.classList.add('menu-game');
 
@@ -25,6 +22,7 @@ const information = () => {
     const inputNameTitle = document.createElement('h2');
     inputNameTitle.classList.add('menu-game__titleH2')
     inputNameTitle.innerText = 'Insira os Nomes dos Jogadores:';
+    inputNameTitle.innerText = 'Insira o Nome dos Jogadores:';
 
     const menuParagraph = document.createElement('p');
     menuParagraph.classList.add('menu-game__paragraph')
@@ -75,6 +73,7 @@ const information = () => {
 
         c++;
     });
+
     menu.appendChild(menuTitle);
 
     menu.appendChild(menuImg);
@@ -85,6 +84,25 @@ const information = () => {
     menu.appendChild(optionsList);
 
     mainContainer.appendChild(menu);
+
+    const buttonInstructions = document.getElementById('button0');
+    const buttonStart = document.getElementById('button1');
+
+    buttonInstructions.addEventListener('click', () => {
+        audio_menu.volume = 0.1
+        audio_menu.play()
+        mainContainer.innerHTML = '';
+        buildInstructions();
+    });
+
+    buttonStart.addEventListener('click', () => {
+        audio_menu.volume = 0.1
+        audio_menu.play()
+        audio2.volume = 0.1
+        audio2.play()
+        mainContainer.innerHTML = '';
+        buildPokeball();
+    });
 }
 
 information();
@@ -96,6 +114,7 @@ window.onload = () => {
 const player1Name = document.getElementById('player1');
 const player2Name = document.getElementById('player2');
 
+
 const playerName = (name, player) => {
     if (name.value === '') {
         return `Player ${player}`;
@@ -105,24 +124,7 @@ const playerName = (name, player) => {
     }
 }
 
-const buttonInstructions = document.getElementById('button0');
 const buttonStart = document.getElementById('button1');
-
-buttonInstructions.addEventListener('click', () => {
-    audio_menu.volume = 0.1
-    audio_menu.play()
-    mainContainer.innerHTML = '';
-    buildInstructions();
-});
-
-buttonStart.addEventListener('click', () => {
-    audio_menu.volume = 0.1
-    audio_menu.play()
-    audio2.volume = 0.1
-    audio2.play()
-    mainContainer.innerHTML = '';
-    buildPokeball();
-});
 
 const buildInstructions = () => {
     const instructionsDiv = document.createElement('div');
@@ -151,16 +153,32 @@ const buildInstructions = () => {
         c++;
     });
 
-    
+    const backButton = document.createElement('button');
+    backButton.id = 'backButton';
+    backButton.classList.add('menu__button');
+    backButton.innerText = '< Back';
+
+    instructionsDiv.appendChild(backButton);
     instructionsDiv.appendChild(buttonStart);
     mainContainer.appendChild(instructionsDiv);
 
     buttonStart.addEventListener('click', () => {
+        audio_menu.volume = 0.15
+        audio_menu.play()
         mainContainer.innerHTML = '';
         mainContainer.style.animation = '';
         mainContainer.style.animation = 'rising 3s';
         buildPokeball();
-    }); 
+    });
+
+    const backB = document.getElementById('backButton');
+    
+    backB.addEventListener('click', () => {
+        audio_menu.volume = 0.15
+        audio_menu.play()
+        mainContainer.innerHTML = '';
+        information();
+    });
 }
 
 let scoreOneTitle = document.querySelector('.score1').innerHTML;
@@ -182,14 +200,17 @@ const buildPokeball = () => {
         mainContainer.innerHTML = '';
         audio.volume = 0.15
         audio.play();
+
         main.className = 'blink_me';
+
         mainContainer.style.pointerEvents = 'none';
         setTimeout(() => {
             mainContainer.style.pointerEvents = 'auto';
         }, 2700);
+
         body.classList.add('body__background');
 
-        generateGame()
+        generateGame();
 
         pokeballCurrent.style.display = 'flex';
         score.style.display = 'flex';
@@ -503,8 +524,14 @@ function textWinner(currentPlayer) {
     const text = document.getElementById('result')
     text.innerText = '';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
+    audio2.pause()
     audio_vitoria.volume = 0.15
     audio_vitoria.play()
+    setTimeout(() => {
+        audio_vitoria.pause()
+        audio2.play()
+    }, 3000);
+    
 
     const reset__button = document.createElement('button')
     const reset = document.querySelector('#reset')
@@ -518,7 +545,8 @@ function textWinner(currentPlayer) {
 function textDraw() {
     const text = document.getElementById('result');
     text.innerText  = '';
-    text.innerText  = 'Houve um empate'
+    text.innerText  = 'Houve um empate!'
+    text.style.right = '110px'
 }
 
 let count = 0;
@@ -554,13 +582,10 @@ reset.addEventListener('click', function(){
 
     document.getElementById('result').innerText = ''
     player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
-    textPlayerCurrent.innerText = 'Player 1';
+    textPlayerCurrent.innerText = playerName(player1Name, 1);
     mainContainer.style.pointerEvents = 'auto';
     mainContainer.innerHTML = ''
     reset.style.display = 'none'
     generateGame()
 })
 
-
-
-    
