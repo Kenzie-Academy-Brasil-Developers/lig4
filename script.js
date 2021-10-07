@@ -488,7 +488,6 @@ function winner(tabuleiro) {
 }
 
 function textWinner(currentPlayer) {
-
     const text = document.getElementById('result')
 
     text.innerText = '';
@@ -543,6 +542,7 @@ reset.addEventListener('click', function(){
     [29,30,31,32,33,34,35],
     [36,37,28,39,40,41,42]
     ]
+
     document.getElementById('result').innerText = ''
     player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
     textPlayerCurrent.innerText = 'Player 1';
