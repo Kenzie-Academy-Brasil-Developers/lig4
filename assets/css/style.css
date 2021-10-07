@@ -31,6 +31,7 @@ body {
     background-size: 90%;
     background-position-x: -128%;
     background-position-y: 5%;
+    overflow: hidden;
 }
 
 .header {
@@ -129,28 +130,98 @@ padding: 05px
 /* Estilização do Menu - Início */
 .menu-game {
     font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .menu-game__title {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 900;
+    margin-bottom: 20px;
 }
 
 .menu-game__img {
-    width: 160px;
+    width: 80%;
     font-family: 'Pokemon Hollow';
 }
 
 .menu-game__button-nest {
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
+    justify-content: space-around; 
+    margin-top: 20px;
+    width: 80%;
+}
+
+.menu-game__titleH2{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.menu-game__paragraph{
+    font-size: 1.2rem;
 }
 
 .menu__button {
     border: none;
     font-family: 'Free Pixel';
     padding: 5px;
+    font-size: 1.1rem;
+    color: #FFF;
+    background-color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 1px 3px black;
+}
+
+#button1{
+    animation: hoverButton 0.9s infinite;
+    
+}
+
+
+
+@keyframes hoverButton {
+    
+    0%{
+        opacity: 1;
+    }
+
+    50%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+
+#player1{
+    border:2px groove red;
+    font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+}
+
+#player1:focus{
+    border:2px groove red;
+}
+
+#player2{
+    border:2px groove black;
+    font-family: 'Free Pixel', Arial, Helvetica, sans-serif;  
+    font-size: 1.1rem;
+}
+
+.menu-game__form{
+height: 60px;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+margin-top: 20px;
 }
 
 .instructions__div {

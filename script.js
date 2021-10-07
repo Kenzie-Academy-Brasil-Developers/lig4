@@ -23,12 +23,15 @@ const information = () => {
     menuTitle.innerText = 'Lig4';
 
     const inputNameTitle = document.createElement('h2');
+    inputNameTitle.classList.add('menu-game__titleH2')
     inputNameTitle.innerText = 'Insira os Nomes dos Jogadores:';
 
     const menuParagraph = document.createElement('p');
+    menuParagraph.classList.add('menu-game__paragraph')
     menuParagraph.innerText = 'Seja bem-vindo(a)!';
 
     const inputNameForm = document.createElement('form');
+    inputNameForm.classList.add('menu-game__form')
 
     const inputArray = ['Jogador 1',
                         'Jogador 2'
@@ -560,3 +563,4 @@ reset.addEventListener('click', function(){
 
 
 
+    
