@@ -7,7 +7,6 @@ const audio2 = document.querySelector('#musica_fundo')
 
 
 const information = () => {
-    
     const menu = document.createElement('div');
     menu.classList.add('menu-game');
 
@@ -171,14 +170,17 @@ const buildPokeball = () => {
         mainContainer.innerHTML = '';
 
         audio.play();
+
         main.className = 'blink_me';
+
         mainContainer.style.pointerEvents = 'none';
         setTimeout(() => {
             mainContainer.style.pointerEvents = 'auto';
         }, 2700);
+
         body.classList.add('body__background');
 
-        mainContainer.append(generateGame());
+        generateGame();
 
         pokeballCurrent.style.display = 'flex';
         score.style.display = 'flex';
@@ -468,7 +470,7 @@ function winner(tabuleiro) {
         }
     }
 
-    for (let i = 2; i < tabuleiro.length; i ++) {
+    for (let i = 3; i < tabuleiro.length; i ++) {
 
         for (let j = 0 ; j < coluna; j++) {
 
@@ -527,11 +529,12 @@ reset.addEventListener('click', function(){
     cont6 = 5
     cont7 = 5
     let contReset = 5
+
     for(let i = 0; i < 6; i ++){
-    for(let j = 0; j < 7; j ++){
-    document.getElementById('bloco' + i + '-' + j).style.background = 'transparent'
-    }
-    contReset --
+        for(let j = 0; j < 7; j ++) {
+            document.getElementById('bloco' + i + '-' + j).style.background = 'transparent'
+        }
+        contReset --
     }
     
     tabuleiro = [
@@ -545,11 +548,9 @@ reset.addEventListener('click', function(){
 
     document.getElementById('result').innerText = ''
     player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
-    textPlayerCurrent.innerText = 'Player 1';
+    textPlayerCurrent.innerText = playerName(player1Name, 1);
     mainContainer.style.pointerEvents = 'auto';
     mainContainer.innerHTML = ''
+
     generateGame()
-})
-    
-
-
+});
