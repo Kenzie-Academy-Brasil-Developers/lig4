@@ -307,6 +307,8 @@ width: 100px;
     color: white;
     border: 1px solid white;
     border-radius: 7px;
+    font-family: 'Free Pixel';
+    font-size: 16px;
 }
 
 @keyframes rising {
@@ -346,4 +348,19 @@ width: 100px;
         transform: translateY(5px);
         border: 1px solid rgba(0, 0, 255, 0);
     }
+}
+#result {
+    position: absolute;
+    top: 5px;
+    right: 50px;
+    background: rgba(128, 128, 128, 0.493);
+    border: 1px solid red;
+    color: white;
+}
+
+p{
+        color: white;
+        margin-top: 0px;
+        position: absolute;
+        bottom: 122px;
 }
