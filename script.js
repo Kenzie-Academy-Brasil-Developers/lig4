@@ -2,11 +2,12 @@ const main = document.querySelector('.main')
 const body = document.body;
 const mainContainer = document.querySelector('.main__container')
 const score = document.getElementById('scoreBoard');
-
 const audio = document.querySelector('#pokeball_sound')
 const audio2 = document.querySelector('#musica_fundo')
 
+
 const information = () => {
+    
     const menu = document.createElement('div');
     menu.classList.add('menu-game');
 
@@ -45,6 +46,7 @@ const information = () => {
 
         c++;
     });
+    menu.appendChild(menuTitle);
 
     menu.appendChild(menuImg);
     menu.appendChild(menuTitle);
@@ -69,6 +71,7 @@ buttonInstructions.addEventListener('click', () => {
 })
 
 buttonStart.addEventListener('click', () => {
+    audio2.play()
     mainContainer.innerHTML = '';
     buildPokeball();
 });
@@ -116,8 +119,7 @@ const buildPokeball = () => {
 
     const pokeballButton = document.createElement('button');
     pokeballButton.id = 'generateGame';
-    pokeballButton.innerText = '>';
-
+    pokeballButton.innerText = '>'
     nest.appendChild(pokeballButton);
     mainContainer.appendChild(nest);
 
@@ -127,7 +129,6 @@ const buildPokeball = () => {
         mainContainer.innerHTML = '';
 
         audio.play();
-
         main.className = 'blink_me';
 
         body.classList.add('body__background');
@@ -157,6 +158,7 @@ const generateGame = () => {
             linha.appendChild(bloco)
         }
     }
+
 }
 
 const pokeballCurrent = document.querySelector('#pokeballCurrent')
@@ -179,7 +181,6 @@ let cont7 = 5
 
 mainContainer.addEventListener('click', function(evt){
 const coluna = evt.target
-audio2.play()
 switch (coluna.id) {
     case 'bloco0-0':
         if(jogador){
@@ -338,16 +339,34 @@ let tabuleiro = [
     [36,37,28,39,40,41,42]
 ]
 
-function winCondition(cont, posicao, cor){
-    for(let i = 0; i < 1; i ++){
-        tabuleiro[cont].splice(posicao, 1, cor)
-    }
-   
+let scoreboardOne = 0;
+let scoreboardTwo = 0;
+
+function scoreboard(currentPlayer){
+const scoreOne = document.getElementById('score__scoreOne')
+const scoreTwo = document.getElementById('score__scoreTwo')
+   if(currentPlayer === 'Player 1'){
+       scoreboardOne++
+       scoreOne.innerText = scoreboardOne
+   }
+   if(currentPlayer === 'Player 2'){
+       scoreboardTwo++
+       scoreTwo.innerText =  scoreboardTwo
+   }
 }
+
+function winCondition(cont, posicao, cor){
+    tabuleiro[cont].splice(posicao, 1, cor)
+}
+
+let indexArr = []
 
 function winner(tabuleiro) {
     const coluna = tabuleiro[0].length - 3
     const linha = tabuleiro.length - 3
+
+  
+    
 
     for (let i = 0 ; i < tabuleiro.length; i++) {
 
@@ -358,8 +377,9 @@ function winner(tabuleiro) {
             if(current !== 0 && current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
                 textWinner(current)
                 scoreboard(current)
+                indexArr.push(i,j,i,j+1,i,j+2,i,j+3)
+                colorPokeballWin(indexArr)
             }
-            
         }
     }
 
@@ -372,6 +392,8 @@ function winner(tabuleiro) {
             if (current !== 0 && current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j]) {
                 textWinner(current)
                 scoreboard(current)
+                indexArr.push(i,j,i+1,j,i+2,j,i+3,j)
+                colorPokeballWin(indexArr)
             }     
         }
     }
@@ -385,6 +407,8 @@ function winner(tabuleiro) {
             if (current !== 0 && current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]) {
                 textWinner(current)
                 scoreboard(current)
+                indexArr.push(i,j,i+1,j+1,i+2,j+2,i+3,j+3)
+                colorPokeballWin(indexArr)
             }
         }
     }
@@ -398,6 +422,9 @@ function winner(tabuleiro) {
             if (current !== 0 && current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
                 textWinner(current)
                 scoreboard(current)
+             
+                indexArr.push(i,j,i-1,j+1,i-2,j+2,i-3,j+3)
+                colorPokeballWin(indexArr)
               
             }
         }
@@ -410,6 +437,12 @@ function textWinner(currentPlayer) {
 
     text.innerText = '';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
+
+    const reset__button = document.createElement('button')
+    const reset = document.querySelector('#reset')
+    reset__button.id = 'reset__button'
+    reset__button.innerText = 'Reset'
+    reset.appendChild(reset__button)
     mainContainer.style.pointerEvents = 'none';
 }
 
@@ -427,40 +460,71 @@ function draw() {
     if (count === 42) {
         textDraw()
     }
+    count = 0
 }
 
-
-let scoreboardOne = 0;
-let scoreboardTwo = 0;
-
-
-function scoreboard(currentPlayer){
-
-const scoreOne = document.getElementById('score__scoreOne')
-const scoreTwo = document.getElementById('score__scoreTwo')
-
-   if(currentPlayer === 'Player 1'){
-       scoreboardOne++
-       scoreOne.innerText = scoreboardOne
-   }
-
-   if(currentPlayer === 'Player 2'){
-       scoreboardTwo++
-       scoreTwo.innerText =  scoreboardTwo
-   }
-   
-}
-
-let numbersArr = 0; 
-
-function resetTabuleiro(arrTabuleiro){
-
-for(let i = 0; i < arrTabuleiro.length;i++){
-
-    for(let j = 0; j < arrTabuleiro[i].length;j++){
-        numbersArr++
-        arrTabuleiro[i][j] = numbersArr
+reset.addEventListener('click', function(){
+    jogador = true
+    cont = 5
+    cont2 = 5
+    cont3 = 5
+    cont4 = 5
+    cont5 = 5
+    cont6 = 5
+    cont7 = 5
+    let contReset = 5
+    for(let i = 0; i < 6; i ++){
+    for(let j = 0; j < 7; j ++){
+    document.getElementById('bloco' + i + '-' + j).style.background = 'transparent'
     }
+    contReset --
+    }
+    
+    tabuleiro = [
+    [1,2,3,4,5,6,7],
+    [8,9,10,11,12,13,14],
+    [15,16,17,18,19,20,21],
+    [22,23,24,25,26,27,28],
+    [29,30,31,32,33,34,35],
+    [36,37,28,39,40,41,42]
+    ]
+    document.getElementById('result').innerText = ''
+    player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
+    textPlayerCurrent.innerText = 'Player 1';
+    mainContainer.style.pointerEvents = 'auto';
+
+ 
+})
+    
+
+function colorPokeballWin(array){
+  
+
+    let first = document.getElementsByClassName('linha')[array[0]].childNodes[array[1]]
+    let second = document.getElementsByClassName('linha')[array[2]].childNodes[array[3]]
+    let third = document.getElementsByClassName('linha')[array[4]].childNodes[array[5]]
+    let fourth = document.getElementsByClassName('linha')[array[6]].childNodes[array[7]]
+
+    let arr = [first,second,third,fourth];
+
+
+   arr.forEach(index =>{
+
+    index.classList.add('colorWinner')
+   })
+
+    
+
+    setTimeout(() => {
+
+      arr.forEach(index =>{
+
+        index.classList.remove('colorWinner')
+      })      
+
+    }, 4000);
+
+    console.log(array)
+    array.splice(0,array.length)
+    console.log(array)
 }
-}
-// resetTabuleiro(tabuleiro);
