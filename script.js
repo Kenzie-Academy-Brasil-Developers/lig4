@@ -249,10 +249,15 @@ const textPlayerCurrent = document.createElement('p');
 
 const player = document.createElement('div');
 player.classList.add('pokeballPlayer');
-player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
+
+const pokeballCurrentPlayerImage = document.createElement('img');
+pokeballCurrentPlayerImage.src = 'assets/css/images/minpokeball.png';
+pokeballCurrentPlayerImage.classList.add('current-pokeball');
+
+player.appendChild(pokeballCurrentPlayerImage);
+player.appendChild(textPlayerCurrent);
 
 pokeballCurrent.appendChild(player);
-pokeballCurrent.appendChild(textPlayerCurrent);
 
 let jogador = true
 let cont = 5
@@ -405,11 +410,11 @@ switch (coluna.id) {
     const player2 = playerName(player2Name, 2);
 
   if (jogador) {
-    player.style.backgroundImage =  "url('assets/css/images/minpokeball.png')"
+    pokeballCurrentPlayerImage.src =  'assets/css/images/minpokeball.png';
     textPlayerCurrent.innerText = player1;
 
     } else {
-    player.style.backgroundImage =  "url('assets/css/images/minultraball.png')"
+    pokeballCurrentPlayerImage.src =  'assets/css/images/minultraball.png';
     textPlayerCurrent.innerText = player2;
     }
 })
@@ -426,17 +431,17 @@ let tabuleiro = [
 let scoreboardOne = 0;
 let scoreboardTwo = 0;
 
-function scoreboard(currentPlayer){
-const scoreOne = document.getElementById('score__scoreOne')
-const scoreTwo = document.getElementById('score__scoreTwo')
-   if(currentPlayer === 'Player 1'){
-       scoreboardOne++
-       scoreOne.innerText = scoreboardOne
-   }
-   if(currentPlayer === 'Player 2'){
-       scoreboardTwo++
-       scoreTwo.innerText =  scoreboardTwo
-   }
+function scoreboard(currentPlayer) {
+    const scoreOne = document.getElementById('score__scoreOne')
+    const scoreTwo = document.getElementById('score__scoreTwo')
+    if(currentPlayer === 'Player 1'){
+        scoreboardOne++
+        scoreOne.innerText = scoreboardOne
+    }
+    if(currentPlayer === 'Player 2'){
+        scoreboardTwo++
+        scoreTwo.innerText =  scoreboardTwo
+    }
 }
 
 function winCondition(cont, posicao, cor){
@@ -531,9 +536,11 @@ function winner(tabuleiro) {
     }
 }
 
+const text = document.getElementById('result');
+
 function textWinner(currentPlayer) {
-    const text = document.getElementById('result')
     text.innerText = '';
+    text.style.display = 'inherit';
     text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
     audio2.pause()
     audio_vitoria.volume = 0.15
@@ -543,28 +550,38 @@ function textWinner(currentPlayer) {
         audio2.play()
     }, 3000);
     
+    audio_vitoria.volume = 0.15;
+    audio_vitoria.play();
 
-    const reset__button = document.createElement('button')
-    const reset = document.querySelector('#reset')
-    reset.style.display = 'flex'
-    reset__button.id = 'reset__button'
-    reset__button.innerText = 'Reset'
-    reset.appendChild(reset__button)
+    buildResetButton();
+
     mainContainer.style.pointerEvents = 'none';
+}
+
+const reset = document.querySelector('#reset');
+
+const buildResetButton = () => {
+    const reset__button = document.createElement('button');
+    
+    reset__button.id = 'reset__button';
+    reset__button.innerText = 'Reset';
+    reset.appendChild(reset__button);
 }
 
 function textDraw() {
     const text = document.getElementById('result');
+    text.style.display = 'flex'
     text.innerText  = '';
-    text.innerText  = 'Houve um empate!'
-    text.style.right = '110px'
+    text.innerText  = 'Houve um empate';
 }
 
-let count = 0;
+let count = 0
 
 function draw() {
-        count++
+    count++
+
     if (count === 42) {
+        console.log('oi')
         textDraw()
     }
 }
@@ -586,6 +603,7 @@ function colorPokeballWin(array){
     console.log(array)
 }
 
+const result = document.getElementById('result');
 
 reset.addEventListener('click', function(){
     audio_menu.volume = 0.1
@@ -607,14 +625,18 @@ reset.addEventListener('click', function(){
     [22,23,24,25,26,27,28],
     [29,30,31,32,33,34,35],
     [36,37,28,39,40,41,42]
-    ]
+    ];
 
-    document.getElementById('result').innerText = ''
-    player.style.backgroundImage = "url('assets/css/images/minpokeball.png')";
+
+    text.innerHTML = '';
+    text.style.display = 'none';
+    
+    reset.innerHTML = ''
+
+    pokeballCurrentPlayerImage.src = 'assets/css/images/minpokeball.png';
     textPlayerCurrent.innerText = playerName(player1Name, 1);
     mainContainer.style.pointerEvents = 'auto';
     mainContainer.innerHTML = ''
-    reset.style.display = 'none'
     generateGame()
 })
 
