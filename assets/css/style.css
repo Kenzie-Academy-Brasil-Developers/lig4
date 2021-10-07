@@ -52,7 +52,7 @@ color: #588b8b;
 
 }
 
-.score{
+.score {
 display: none;
 justify-content: center;
 align-items: center;
@@ -65,13 +65,13 @@ height: 50px;
 width:300px;
 }
 
-#score__scoreOne{
+#score__scoreOne {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#score__scoreTwo{
+#score__scoreTwo {
     display: flex;
     justify-content: center;
 }
@@ -356,11 +356,4 @@ width: 100px;
     background: rgba(128, 128, 128, 0.493);
     border: 1px solid red;
     color: white;
-}
-
-p{
-        color: white;
-        margin-top: 0px;
-        position: absolute;
-        bottom: 122px;
 }
