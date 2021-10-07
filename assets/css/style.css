@@ -132,10 +132,10 @@ width: 100px;
 }
 
 .menu-game__button-nest {
-    /* display: flex; */
-    /* justify-content: space-around; */
+    display: flex; 
+     justify-content: space-around;
     margin-top: 20px;
-    /* width: 80%; */
+     width: 80%; 
 }
 
 .menu-game__titleH2{
@@ -184,23 +184,31 @@ width: 100px;
 
 
 #player1{
-    border:2px groove red;
+    border:2px solid red;
     font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 5%;
 }
 
-#player1:focus{
-    border:2px groove red;
+#player1::placeholder{
+    color: black;
+}
+
+#player2::placeholder{
+    color: black;
 }
 
 #player2{
     border:2px groove black;
     font-family: 'Free Pixel', Arial, Helvetica, sans-serif;  
     font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 5%;
 }
 
 .menu-game__form{
-height: 60px;
+height: 80px;
 display: flex;
 flex-direction: column;
 justify-content: space-around;
@@ -211,9 +219,25 @@ margin-top: 20px;
     text-align: center;
 }
 
+.instructions__tittle{
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+    padding-bottom: 12px;
+    line-height: 40px;
+}
+
 .instructions__item {
     margin-bottom: 5px;
+    padding: 12px;
+    font-size: 1.08rem;
+    border-bottom: 1px solid gray;
+    background-color: honeydew;
+    box-shadow: 2px 5px honeydew;
 }
+
+
 /* Estilização do Menu - Fim */
 
 .linha {

@@ -121,6 +121,7 @@ const buildInstructions = () => {
     instructionsDiv.classList.add('instructions__div');
 
     const instructionsTitle = document.createElement('h2');
+    instructionsTitle.classList.add('instructions__tittle')
     instructionsTitle.innerText = 'Instruções do Jogo';
 
     const instructionsArray = ['No Lig-4, um jogador assume a Pokebola Vermelha e o outro assume a Pokebola Preta.',
@@ -136,7 +137,8 @@ const buildInstructions = () => {
     instructionsArray.forEach( item => {
         const instructionsItem = document.createElement('p');
         instructionsItem.classList.add('instructions__item');
-        instructionsItem.innerText = `${c}- ${item}`;
+
+        instructionsItem.innerText = `${c} - ${item}`;
 
         instructionsDiv.appendChild(instructionsItem);
 
