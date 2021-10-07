@@ -7,8 +7,6 @@ const audio2 = document.querySelector('#musica_fundo')
 const audio_vitoria = document.querySelector('#musica_vitoria')
 const audio_menu = document.querySelector('#audio_menu')
 
-
-
 const information = () => {
     const menu = document.createElement('div');
     menu.classList.add('menu-game');
@@ -71,6 +69,7 @@ const information = () => {
 
         c++;
     });
+
     menu.appendChild(menuTitle);
 
     menu.appendChild(menuImg);
@@ -81,6 +80,25 @@ const information = () => {
     menu.appendChild(optionsList);
 
     mainContainer.appendChild(menu);
+
+    const buttonInstructions = document.getElementById('button0');
+    const buttonStart = document.getElementById('button1');
+
+    buttonInstructions.addEventListener('click', () => {
+        audio_menu.volume = 0.1
+        audio_menu.play()
+        mainContainer.innerHTML = '';
+        buildInstructions();
+    });
+
+    buttonStart.addEventListener('click', () => {
+        audio_menu.volume = 0.1
+        audio_menu.play()
+        audio2.volume = 0.1
+        audio2.play()
+        mainContainer.innerHTML = '';
+        buildPokeball();
+    });
 }
 
 information();
@@ -101,24 +119,7 @@ const playerName = (name, player) => {
     }
 }
 
-const buttonInstructions = document.getElementById('button0');
 const buttonStart = document.getElementById('button1');
-
-buttonInstructions.addEventListener('click', () => {
-    audio_menu.volume = 0.1
-    audio_menu.play()
-    mainContainer.innerHTML = '';
-    buildInstructions();
-});
-
-buttonStart.addEventListener('click', () => {
-    audio_menu.volume = 0.1
-    audio_menu.play()
-    audio2.volume = 0.1
-    audio2.play()
-    mainContainer.innerHTML = '';
-    buildPokeball();
-});
 
 const buildInstructions = () => {
     const instructionsDiv = document.createElement('div');
