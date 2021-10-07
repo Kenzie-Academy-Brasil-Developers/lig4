@@ -22,7 +22,7 @@ const information = () => {
     menuTitle.innerText = 'Lig4';
 
     const inputNameTitle = document.createElement('h2');
-    inputNameTitle.innerText = 'Insira os Nomes dos Jogadores:';
+    inputNameTitle.innerText = 'Insira o Nome dos Jogadores:';
 
     const menuParagraph = document.createElement('p');
     menuParagraph.innerText = 'Seja bem-vindo(a)!';
@@ -146,7 +146,12 @@ const buildInstructions = () => {
         c++;
     });
 
-    
+    const backButton = document.createElement('button');
+    backButton.id = 'backButton';
+    backButton.classList.add('menu__button');
+    backButton.innerText = '< Back';
+
+    instructionsDiv.appendChild(backButton);
     instructionsDiv.appendChild(buttonStart);
     mainContainer.appendChild(instructionsDiv);
 
@@ -155,7 +160,14 @@ const buildInstructions = () => {
         mainContainer.style.animation = '';
         mainContainer.style.animation = 'rising 3s';
         buildPokeball();
-    }); 
+    });
+
+    const backB = document.getElementById('backButton');
+    
+    backB.addEventListener('click', () => {
+        mainContainer.innerHTML = '';
+        information();
+    });
 }
 
 let scoreOneTitle = document.querySelector('.score1').innerHTML;
