@@ -27,7 +27,7 @@ body {
 
 .body__background {
     background-color: #424242;
-    background-image: url(./images/r.png);
+    background-image: url(../images/r.png);
     background-repeat: no-repeat;
     background-size: 300px;
     background-position-x: 50%;
@@ -65,6 +65,7 @@ body {
                   1px -1px 0 #01FF70,
                  -1px  1px 0 #01FF70,
                   1px  1px 0 #01FF70;
+    text-align: center;
                   
 }
 
@@ -407,7 +408,7 @@ margin-top: 20px;
 .rollout__animation{
     width: 45px;
     height: 45px;
-    background-image: url(images/pokeball-mobile.png);
+    background-image: url(../images/pokeball-mobile.png);
     background-repeat: no-repeat;
     background-size: 45px 45px;
     animation: pokeball__rollout 1s;
@@ -416,7 +417,7 @@ margin-top: 20px;
 .rollout__animation2{
     width: 45px;
     height: 45px;
-    background-image: url(images/ultraball-mobile.png);
+    background-image: url(../images/ultraball-mobile.png);
     background-repeat: no-repeat;
     background-size: 45px 45px;
     animation: pokeball__rollout 1s;
@@ -522,7 +523,7 @@ margin-top: 20px;
     }
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .main__container {
         width: 500px;
     }
@@ -640,6 +641,7 @@ margin-top: 20px;
     #reset__button {
         font-size: 1.5rem;
         padding: 10px;
+        cursor: pointer;
     }
 }
 

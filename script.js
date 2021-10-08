@@ -13,7 +13,7 @@ const information = () => {
 
     const menuImg = document.createElement('img');
     menuImg.classList.add('menu-game__img');
-    menuImg.src = './assets/css/images/pokemon-logo.png';
+    menuImg.src = './assets/images/pokemon-logo.png';
 
     const menuTitle = document.createElement('h1');
     menuTitle.classList.add('menu-game__title')
@@ -253,7 +253,7 @@ const player = document.createElement('div');
 player.classList.add('pokeballPlayer');
 
 const pokeballCurrentPlayerImage = document.createElement('img');
-pokeballCurrentPlayerImage.src = 'assets/css/images/minpokeball.png';
+pokeballCurrentPlayerImage.src = 'assets/images/minpokeball.png';
 pokeballCurrentPlayerImage.classList.add('current-pokeball');
 
 player.appendChild(pokeballCurrentPlayerImage);
@@ -412,11 +412,11 @@ switch (coluna.id) {
     const player2 = playerName(player2Name, 2);
 
   if (jogador) {
-    pokeballCurrentPlayerImage.src =  'assets/css/images/minpokeball.png';
+    pokeballCurrentPlayerImage.src =  'assets/images/minpokeball.png';
     textPlayerCurrent.innerText = player1;
 
     } else {
-    pokeballCurrentPlayerImage.src =  'assets/css/images/minultraball.png';
+    pokeballCurrentPlayerImage.src =  'assets/images/minultraball.png';
     textPlayerCurrent.innerText = player2;
     }
 })
@@ -578,7 +578,7 @@ function textDraw() {
     const text = document.getElementById('result');
     text.innerText  = '';
     text.style.display = 'inherit'
-    text.innerText  = 'Houve um empate';
+    text.innerText  = 'Houve um empate!';
     buildResetButton();
 
     audio2.pause()
@@ -652,7 +652,7 @@ reset.addEventListener('click', function(){
     
     reset.innerHTML = ''
 
-    pokeballCurrentPlayerImage.src = 'assets/css/images/minpokeball.png';
+    pokeballCurrentPlayerImage.src = 'assets/images/minpokeball.png';
     textPlayerCurrent.innerText = playerName(player1Name, 1);
     mainContainer.style.pointerEvents = 'auto';
     mainContainer.innerHTML = ''
