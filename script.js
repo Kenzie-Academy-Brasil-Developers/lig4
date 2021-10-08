@@ -570,6 +570,10 @@ const buildResetButton = () => {
     reset.appendChild(reset__button);
 }
 
+const buildPopUp = () => {
+    const back
+}
+
 function textDraw() {
     const text = document.getElementById('result');
     text.innerText  = '';
