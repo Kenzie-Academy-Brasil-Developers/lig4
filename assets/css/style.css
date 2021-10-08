@@ -232,14 +232,6 @@ padding: 05px
     transition: .5s;
 }
 
-#player1:focus {
-    border: 2px solid  #3c5aa6;
-}
-
-#player2:focus {
-    border: 2px solid #ffcb05;
-}
-
 .menu-game__form {
 height: 80px;
 display: flex;

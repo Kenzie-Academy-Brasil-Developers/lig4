@@ -255,9 +255,6 @@ player.appendChild(textPlayerCurrent);
 
 pokeballCurrent.appendChild(player);
 
-const player1 = playerName(player1Name, 1);
-const player2 = playerName(player2Name, 2);
-
 let jogador = true
 let cont = 5
 let cont2 = 5
@@ -403,7 +400,10 @@ switch (coluna.id) {
         }
         
     break
-  }
+    }
+
+    const player1 = playerName(player1Name, 1);
+    const player2 = playerName(player2Name, 2);
 
     if (jogador) {
         pokeballCurrentPlayerImage.src =  'assets/images/minpokeball.png';
