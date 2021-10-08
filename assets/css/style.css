@@ -27,7 +27,7 @@ body {
 
 .body__background {
     background-color: #424242;
-    background-image: url(./images/r.png);
+    background-image: url(../images/r.png);
     background-repeat: no-repeat;
     background-size: 300px;
     background-position-x: 50%;
@@ -408,7 +408,7 @@ margin-top: 20px;
 .rollout__animation{
     width: 45px;
     height: 45px;
-    background-image: url(images/pokeball-mobile.png);
+    background-image: url(../images/pokeball-mobile.png);
     background-repeat: no-repeat;
     background-size: 45px 45px;
     animation: pokeball__rollout 1s;
@@ -417,7 +417,7 @@ margin-top: 20px;
 .rollout__animation2{
     width: 45px;
     height: 45px;
-    background-image: url(images/ultraball-mobile.png);
+    background-image: url(../images/ultraball-mobile.png);
     background-repeat: no-repeat;
     background-size: 45px 45px;
     animation: pokeball__rollout 1s;
