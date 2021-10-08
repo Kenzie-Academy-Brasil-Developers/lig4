@@ -574,7 +574,7 @@ function textDraw() {
     const text = document.getElementById('result');
     text.innerText  = '';
     text.style.display = 'inherit'
-    text.innerText  = 'Houve um empate';
+    text.innerText  = 'Houve um empate!';
     buildResetButton();
 
     audio2.pause()
