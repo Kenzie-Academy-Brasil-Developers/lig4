@@ -60,6 +60,7 @@ body {
     font-weight: bold;
     font-size: 1.5rem;
     justify-content: center;
+    text-align: center;
     text-shadow: -1px -1px 0 #01FF70, 
                   1px -1px 0 #01FF70,
                  -1px  1px 0 #01FF70,
@@ -568,7 +569,7 @@ margin-top: 20px;
 
     #win {
         height: 30px;
-        width: 430px;
+        width: 100%;
         text-align: center;
     }
 
