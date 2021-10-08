@@ -43,12 +43,13 @@ const information = () => {
         input.id = `player${c}`;
         input.classList.add('menu__input');
         input.placeholder = item;
+        input.value = item;
         input.maxLength = '8';
 
         inputNameForm.appendChild(input);
 
         c++;
-    })
+    });
 
     const optionsList = document.createElement('ul');
     optionsList.classList.add('menu-game__button-nest');
@@ -82,10 +83,16 @@ const information = () => {
     menu.appendChild(menuImg);
     menu.appendChild(menuTitle);
     menu.appendChild(menuParagraph);
+    menu.appendChild(inputNameTitle);
     menu.appendChild(inputNameForm);
     menu.appendChild(optionsList);
 
     mainContainer.appendChild(menu);
+
+    const player1Name = document.getElementById('player1');
+    const player2Name = document.getElementById('player2');
+
+    
 
     const buttonInstructions = document.getElementById('button0');
     const buttonStart = document.getElementById('button1');
@@ -110,21 +117,12 @@ const information = () => {
 
 information();
 
-window.onload = () => {
-    mainContainer.style.animation = 'rising 5s';
-};
-
 const player1Name = document.getElementById('player1');
 const player2Name = document.getElementById('player2');
 
-const playerName = (name, player) => {
-    if (name.value === '') {
-        return `Player ${player}`;
-
-    } else if (name.value !== '') {
-        return name.value;
-    }
-}
+window.onload = () => {
+    mainContainer.style.animation = 'rising 5s';
+};
 
 const buildInstructions = () => {
     const instructionsDiv = document.createElement('div');
@@ -174,7 +172,8 @@ const buildInstructions = () => {
         information();
     });
 
-    console.log(player1Name.value);
+    const player1 = player1Name.value;
+    const player2 = player2Name.value;
 }
 
 let scoreOneTitle = document.querySelector('.score1').innerHTML;
@@ -209,10 +208,10 @@ const buildPokeball = () => {
         pokeballCurrent.style.display = 'flex';
         score.style.display = 'flex';
 
-        scoreOneTitle = playerName(player1Name, 1) + scoreOneTitle;
+        scoreOneTitle = player1Name.value + scoreOneTitle;
         document.querySelector('.score1').innerHTML = scoreOneTitle;
 
-        scoreTwoTitle = playerName(player2Name, 2) + scoreTwoTitle;
+        scoreTwoTitle = player2Name.value + scoreTwoTitle;
         document.querySelector('.score2').innerHTML = scoreTwoTitle;
 
         generateGame();
@@ -402,8 +401,8 @@ switch (coluna.id) {
     break
     }
 
-    const player1 = playerName(player1Name, 1);
-    const player2 = playerName(player2Name, 2);
+    const player1 = player1Name.value;
+    const player2 = player2Name.value;
 
     if (jogador) {
         pokeballCurrentPlayerImage.src =  'assets/images/minpokeball.png';
@@ -457,9 +456,9 @@ function winner(tabuleiro) {
             
             if(current !== 0 && current === tabuleiro[i][j + 1] && current === tabuleiro[i][j+2] && current === tabuleiro[i][j + 3]) {
                 if (current === 'Player 1') {
-                    textWinner(playerName(player1Name, 1));
+                    textWinner(player1Name.value);
                 } else {
-                    textWinner(playerName(player2Name, 2));
+                    textWinner(player1Name.value);
                 }
                 
                 scoreboard(current)
@@ -478,9 +477,9 @@ function winner(tabuleiro) {
 
             if (current !== 0 && current === tabuleiro[i+1][j] && current === tabuleiro[i+2][j] && current === tabuleiro[i+3][j]) {
                 if (current === 'Player 1') {
-                    textWinner(playerName(player1Name, 1));
+                    textWinner(player1Name.value);
                 } else {
-                    textWinner(playerName(player2Name, 2));
+                    textWinner(player2Name.value);
                 }
                 
                 scoreboard(current)
@@ -499,9 +498,9 @@ function winner(tabuleiro) {
 
             if (current !== 0 && current === tabuleiro[i+1][j+1] && current === tabuleiro[i+2][j+2] && current === tabuleiro[i+3][j+3]) {
                 if (current === 'Player 1') {
-                    textWinner(playerName(player1Name, 1));
+                    textWinner(player1Name.value);
                 } else {
-                    textWinner(playerName(player2Name, 2));
+                    textWinner(player2Name.value);
                 }
                 
                 scoreboard(current)
@@ -519,9 +518,9 @@ function winner(tabuleiro) {
 
             if (current !== 0 && current === tabuleiro[i-1][j+1] && current === tabuleiro[i-2][j+2] && current === tabuleiro[i-3][j+3]){ 
                 if (current === 'Player 1') {
-                    textWinner(playerName(player1Name, 1));
+                    textWinner(player1Name.value);
                 } else {
-                    textWinner(playerName(player2Name, 2));
+                    textWinner(player2Name.value);
                 }
 
                 scoreboard(current)
@@ -667,7 +666,7 @@ reset.addEventListener('click', function(){
     reset.innerHTML = ''
 
     pokeballCurrentPlayerImage.src = 'assets/images/minpokeball.png';
-    textPlayerCurrent.innerText = playerName(player1Name, 1);
+    textPlayerCurrent.innerText = player1Name.value;
     mainContainer.style.pointerEvents = 'auto';
     mainContainer.innerHTML = ''
     generateGame()
