@@ -40,6 +40,7 @@ const information = () => {
     inputArray.forEach( item => {
         const input = document.createElement('input');
         input.id = `player${c}`;
+        input.classList.add('menu__input');
         input.placeholder = item;
         input.maxLength = '8';
 
@@ -132,7 +133,7 @@ const buildInstructions = () => {
 
     const instructionsTitle = document.createElement('h2');
     instructionsTitle.classList.add('instructions__tittle')
-    instructionsTitle.innerText = 'Instruções do Jogo';
+    instructionsTitle.innerText = 'Instruções';
 
     const instructionsArray = ['No Lig-4, um jogador assume a Pokebola Vermelha e o outro assume a Pokebola Preta.',
                                'Os jogadores se alternam inserindo as Pokebolas em uma das 7 colunas de uma tabela 6x7.',
@@ -161,17 +162,17 @@ const buildInstructions = () => {
     backButton.innerText = '< Back';
 
     instructionsDiv.appendChild(backButton);
-    instructionsDiv.appendChild(buttonStart);
+    // instructionsDiv.appendChild(buttonStart);
     mainContainer.appendChild(instructionsDiv);
 
-    buttonStart.addEventListener('click', () => {
-        audio_menu.volume = 0.15
-        audio_menu.play()
-        mainContainer.innerHTML = '';
-        mainContainer.style.animation = '';
-        mainContainer.style.animation = 'rising 3s';
-        buildPokeball();
-    });
+    // buttonStart.addEventListener('click', () => {
+    //     audio_menu.volume = 0.15
+    //     audio_menu.play()
+    //     mainContainer.innerHTML = '';
+    //     mainContainer.style.animation = '';
+    //     mainContainer.style.animation = 'rising 3s';
+    //     buildPokeball();
+    // });
 
     const backB = document.getElementById('backButton');
     
@@ -192,7 +193,6 @@ const buildPokeball = () => {
 
     const pokeballButton = document.createElement('button');
     pokeballButton.id = 'generateGame';
-    pokeballButton.innerText = '>'
     nest.appendChild(pokeballButton);
     mainContainer.appendChild(nest);
 
@@ -572,9 +572,23 @@ const buildResetButton = () => {
 
 function textDraw() {
     const text = document.getElementById('result');
-    text.style.display = 'flex'
     text.innerText  = '';
+    text.style.display = 'inherit'
     text.innerText  = 'Houve um empate';
+    buildResetButton();
+
+    audio2.pause()
+    audio_vitoria.volume = 0.15
+    audio_vitoria.play()
+    setTimeout(() => {
+        audio_vitoria.pause()
+        audio2.play()
+    }, 3000);
+    
+    audio_vitoria.volume = 0.15;
+    audio_vitoria.play();
+
+    mainContainer.style.pointerEvents = 'none';
 }
 
 let count = 0
@@ -583,7 +597,6 @@ function draw() {
     count++
 
     if (count === 42) {
-        console.log('oi')
         textDraw()
     }
 }

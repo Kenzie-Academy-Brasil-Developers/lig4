@@ -58,7 +58,7 @@ body {
     background: rgba(128, 128, 128, 0.493);
     color: #FFF;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     justify-content: center;
     text-shadow: -1px -1px 0 #01FF70, 
                   1px -1px 0 #01FF70,
@@ -151,12 +151,12 @@ padding: 05px
     width: 80%; 
 }
 
-.menu-game__titleH2{
+.menu-game__titleH2 {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.menu-game__paragraph{
+.menu-game__paragraph {
     font-size: 1.2rem;
 }
 
@@ -173,55 +173,50 @@ padding: 05px
     margin: 20px;
 }
 
-#button1{
+.menu__button:hover {
+    background-color: #FFF;
+    color: #000;
+    transition: .5s;
+}
+
+.menu__button:not(:hover) {
+    transition: .5s;
+}
+
+#button1 {
     animation: hoverButton 0.9s infinite;
     
 }
 
-
-
-@keyframes hoverButton {
-    
-    0%{
-        opacity: 1;
-    }
-
-    50%{
-        opacity: 0;
-    }
-
-    100%{
-        opacity: 1;
-    }
-}
-
-
-
-#player1{
-    border:2px solid red;
+.menu__input {
+    border: 2px solid #000;
     font-family: 'Free Pixel', Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
     padding: 5px;
-    border-radius: 5%;
+    border-radius: 7px;
 }
 
-#player1::placeholder{
+.menu__input::placeholder {
     color: black;
 }
 
-#player2::placeholder{
-    color: black;
+.menu__input:focus::placeholder {
+    opacity: 0;
+    transform: translateX(5px);
+    transition: .5s;
 }
 
-#player2{
-    border:2px groove black;
-    font-family: 'Free Pixel', Arial, Helvetica, sans-serif;  
-    font-size: 1.1rem;
-    padding: 5px;
-    border-radius: 5%;
+#player1:focus {
+    outline: 2px solid #3c5aa6;
+    border: 2px solid  #3c5aa6;
 }
 
-.menu-game__form{
+#player2:focus {
+    outline: 2px solid #ffcb05;
+    border: 2px solid #ffcb05;
+}
+
+.menu-game__form {
 height: 80px;
 display: flex;
 flex-direction: column;
@@ -233,9 +228,9 @@ margin-top: 20px;
     text-align: center;
 }
 
-.instructions__tittle{
+.instructions__tittle {
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     margin-bottom: 5px;
     border-bottom: 1px solid black;
     padding-bottom: 12px;
@@ -246,14 +241,11 @@ margin-top: 20px;
     margin-bottom: 5px;
     padding: 12px;
     font-size: 1.08rem;
-    border-bottom: 1px solid gray;
-    background-color: honeydew;
-    box-shadow: 2px 5px honeydew;
+    border: 1px dashed #808080;
+    background-color: #f0fff0;
 }
 
-
 /* Estilização do Menu - Fim */
-
 .linha {
     display: flex;
 }
@@ -402,6 +394,15 @@ margin-top: 20px;
     1px  1px 0 #f5193a;
 }
 
+#reset__button:hover {
+    background-color: #f5193a;
+    transition: .5s;
+}
+
+#reset__button:not(:hover) {
+    transition: .5s;
+} 
+
 .rollout__animation{
     width: 45px;
     height: 45px;
@@ -505,15 +506,74 @@ margin-top: 20px;
     }
 }
 
+@keyframes hoverButton {
+    
+    0%{
+        opacity: 1;
+    }
+
+    50%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
 @media (min-width: 768px) {
+    .main__container {
+        width: 500px;
+    }
+
+    .menu-game__img {
+        width: 400px;
+    }
+
+    .menu-game__title {
+        font-size: 6.5rem;
+    }
+
+    .menu-game__paragraph{
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .menu-game__titleH2 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .menu__input {
+        width: 250px;
+        padding: 8px;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+
+    .menu__button {
+        cursor: pointer;
+        padding: 15px;
+        font-size: 1.5rem;
+    }
+
+    .instructions__tittle {
+        font-size: 4rem;
+        margin-bottom: 10px;
+    }
+    
+    .instructions__item {
+        font-size: 1.6rem;  
+    }
+
     #win {
         height: 30px;
-        width: 390px;
+        width: 430px;
         text-align: center;
     }
 
     #result {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         padding: 5px;
         border-radius: 7px;
     }
@@ -577,7 +637,7 @@ margin-top: 20px;
     }
 
     #reset__button {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         padding: 10px;
     }
 }
