@@ -3,11 +3,6 @@
     src: url('/assets/fonts/FreePixel.ttf');
 }
 
-@font-face {
-    font-family: 'Pokemon Hollow';
-    src: url('/assets/fonts/PokemonHollow.ttf');
-}
-
 html, body {
     height: 100%;
     width: 100%;
@@ -31,7 +26,7 @@ body {
     background-repeat: no-repeat;
     background-size: 300px;
     background-position-x: 50%;
-    background-position-y: 50%;
+    background-position-y: 40%;
 }
 
 .header {
@@ -48,26 +43,55 @@ body {
 
 }
 
-#win {
-    height: 20px;
-    width: 300px;
+.pop-up-background {
+    height: 100%;
+    width: 100%;
+    background-color: #00000067;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-#result {
-    display: none;
-    background: rgba(128, 128, 128, 0.493);
+.pop-up__message {
+    width: 300px;
+    height: 100px;
+    padding: 20px;
     color: #FFF;
-    font-weight: bold;
-    font-size: 1.5rem;
+    border-radius: 10px;
+    border: .1px dotted #000;
+    background-color: rgba(255, 255, 255, 0.685);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    display: flex;
     justify-content: center;
-    text-align: center;
-    text-shadow: -1px -1px 0 #01FF70, 
-                  1px -1px 0 #01FF70,
-                 -1px  1px 0 #01FF70,
-                  1px  1px 0 #01FF70;
-    text-align: center;
-                  
+    align-items: center;
+    text-shadow: -1px -1px 0 #000, 
+                  1px -1px 0 #000,
+                 -1px  1px 0 #000,
+                  1px  1px 0 #000;  
 }
+
+.x-button {
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 50px;
+    text-align: center;
+    border: 2px solid tomato;
+    background-color: #fc3715;
+    color: #FFF;
+    font-weight: 900;
+    font-family: 'Free Pixel';
+}
+
 
 .score {
     height: 50px;
@@ -209,12 +233,10 @@ padding: 05px
 }
 
 #player1:focus {
-    outline: 2px solid #3c5aa6;
     border: 2px solid  #3c5aa6;
 }
 
 #player2:focus {
-    outline: 2px solid #ffcb05;
     border: 2px solid #ffcb05;
 }
 
@@ -283,7 +305,8 @@ margin-top: 20px;
         margin-top: 0px;
         font-weight: bold;
         font-size: 1.3rem;
-        text-shadow: -1px -1px 0 #f5193a, 
+        text-shadow: 
+                 -1px -1px 0 #f5193a, 
                   1px -1px 0 #f5193a,
                  -1px  1px 0 #f5193a,
                   1px  1px 0 #f5193a;
@@ -486,7 +509,7 @@ margin-top: 20px;
 
     100% {
         transform: translateY(5px);
-        border: 1px solid rgba(0, 0, 255, 0);
+        border: 1px solid rgba(0, 0, 255, 0); 
     }
 }
 
@@ -568,18 +591,6 @@ margin-top: 20px;
         font-size: 1.6rem;  
     }
 
-    #win {
-        height: 30px;
-        width: 100%;
-        text-align: center;
-    }
-
-    #result {
-        font-size: 1.8rem;
-        padding: 5px;
-        border-radius: 7px;
-    }
-
     .score {
         height: 80px;
         width: 500px;
@@ -614,20 +625,20 @@ margin-top: 20px;
     }
 
     .linha__bloco {
-        width: 80px;
-        height: 80px;
+        width: 65px;
+        height: 65px;
     }
 
     .rollout__animation {
-        width: 80px;
-        height: 80px;
-        background-size: 80px 80px;
+        width: 65px;
+        height: 65px;
+        background-size: 65px 65px;
     }
 
     .rollout__animation2 {
-        width: 80px;
-        height: 80px;
-        background-size: 80px 80px;
+        width: 65px;
+        height: 65px;
+        background-size: 65px 65px;
     }
 
     .current-pokeball {
@@ -637,9 +648,37 @@ margin-top: 20px;
     .pokeballPlayer p {
         font-size: 2rem;
     }
+    
+    .pop-up__message {
+        width: 500px;
+        height: 180px;
+        font-size: 1.8rem;
+         
+    }
+    
+    .x-button {
+        height: 30px;
+        width: 30px;
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+
+    .x-button:hover {
+        background-color: tomato;
+        border: 2px solid #fc3815;
+        transition: .2s;
+    }
+
+    .x-button:not(:hover) {
+        transition: .2s;
+    }
+    #reset {
+        width: 200px;
+        justify-self: flex-start;
+    }
 
     #reset__button {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         padding: 10px;
         cursor: pointer;
     }

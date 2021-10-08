@@ -16,7 +16,7 @@ const information = () => {
     menuImg.src = './assets/images/pokemon-logo.png';
 
     const menuTitle = document.createElement('h1');
-    menuTitle.classList.add('menu-game__title')
+    menuTitle.classList.add('menu-game__title');
     menuTitle.innerText = 'Lig4';
 
     const inputNameTitle = document.createElement('h2');
@@ -31,7 +31,8 @@ const information = () => {
     const inputNameForm = document.createElement('form');
     inputNameForm.classList.add('menu-game__form')
 
-    const inputArray = ['Player 1',
+    const inputArray = [
+                        'Player 1',
                         'Player 2'
                        ];
 
@@ -52,7 +53,8 @@ const information = () => {
     const optionsList = document.createElement('ul');
     optionsList.classList.add('menu-game__button-nest');
 
-    const optionsArray = ['Instruções',
+    const optionsArray = [
+                          'Instruções',
                           'Start >'
                          ];
 
@@ -80,7 +82,6 @@ const information = () => {
     menu.appendChild(menuImg);
     menu.appendChild(menuTitle);
     menu.appendChild(menuParagraph);
-    menu.appendChild(inputNameTitle);
     menu.appendChild(inputNameForm);
     menu.appendChild(optionsList);
 
@@ -103,6 +104,7 @@ const information = () => {
         audio2.play()
         mainContainer.innerHTML = '';
         buildPokeball();
+        body.style.justifyContent = 'center';
     });
 }
 
@@ -115,7 +117,6 @@ window.onload = () => {
 const player1Name = document.getElementById('player1');
 const player2Name = document.getElementById('player2');
 
-
 const playerName = (name, player) => {
     if (name.value === '') {
         return `Player ${player}`;
@@ -125,8 +126,6 @@ const playerName = (name, player) => {
     }
 }
 
-const buttonStart = document.getElementById('button1');
-
 const buildInstructions = () => {
     const instructionsDiv = document.createElement('div');
     instructionsDiv.classList.add('instructions__div');
@@ -135,7 +134,8 @@ const buildInstructions = () => {
     instructionsTitle.classList.add('instructions__tittle')
     instructionsTitle.innerText = 'Instruções';
 
-    const instructionsArray = ['No Lig-4, um jogador assume a Pokebola Vermelha e o outro assume a Pokebola Preta.',
+    const instructionsArray = [
+                               'No Lig-4, um jogador assume a Pokebola Vermelha e o outro assume a Pokebola Preta.',
                                'Os jogadores se alternam inserindo as Pokebolas em uma das 7 colunas de uma tabela 6x7.',
                                'O primeiro jogador que conseguir quatro de suas Pokebolas em uma linha (seja horizontal, vertical ou diagonal) vence.',
                                'O jogo pode terminar em empate quando todas as células estiverem preenchidas e nenhum jogador conseguir quatro peças em linha.',
@@ -162,17 +162,8 @@ const buildInstructions = () => {
     backButton.innerText = '< Back';
 
     instructionsDiv.appendChild(backButton);
-    // instructionsDiv.appendChild(buttonStart);
-    mainContainer.appendChild(instructionsDiv);
 
-    // buttonStart.addEventListener('click', () => {
-    //     audio_menu.volume = 0.15
-    //     audio_menu.play()
-    //     mainContainer.innerHTML = '';
-    //     mainContainer.style.animation = '';
-    //     mainContainer.style.animation = 'rising 3s';
-    //     buildPokeball();
-    // });
+    mainContainer.appendChild(instructionsDiv);
 
     const backB = document.getElementById('backButton');
     
@@ -182,6 +173,8 @@ const buildInstructions = () => {
         mainContainer.innerHTML = '';
         information();
     });
+
+    console.log(player1Name.value);
 }
 
 let scoreOneTitle = document.querySelector('.score1').innerHTML;
@@ -199,6 +192,7 @@ const buildPokeball = () => {
     const generateGameButton = document.getElementById('generateGame');
 
     generateGameButton.addEventListener('click', () => {
+        body.style.justifyContent = 'space-evenly';
         mainContainer.innerHTML = '';
         audio.volume = 0.15
         audio.play();
@@ -212,8 +206,6 @@ const buildPokeball = () => {
 
         body.classList.add('body__background');
 
-        generateGame();
-
         pokeballCurrent.style.display = 'flex';
         score.style.display = 'flex';
 
@@ -222,6 +214,8 @@ const buildPokeball = () => {
 
         scoreTwoTitle = playerName(player2Name, 2) + scoreTwoTitle;
         document.querySelector('.score2').innerHTML = scoreTwoTitle;
+
+        generateGame();
     });
 }
 
@@ -261,6 +255,9 @@ player.appendChild(textPlayerCurrent);
 
 pokeballCurrent.appendChild(player);
 
+const player1 = playerName(player1Name, 1);
+const player2 = playerName(player2Name, 2);
+
 let jogador = true
 let cont = 5
 let cont2 = 5
@@ -270,7 +267,7 @@ let cont5 = 5
 let cont6 = 5
 let cont7 = 5
 
-mainContainer.addEventListener('click', function(evt){
+mainContainer.addEventListener('click', function(evt) {
 const coluna = evt.target
 switch (coluna.id) {
     case 'bloco0-0':
@@ -408,16 +405,13 @@ switch (coluna.id) {
     break
   }
 
-    const player1 = playerName(player1Name, 1);
-    const player2 = playerName(player2Name, 2);
-
-  if (jogador) {
-    pokeballCurrentPlayerImage.src =  'assets/images/minpokeball.png';
-    textPlayerCurrent.innerText = player1;
+    if (jogador) {
+        pokeballCurrentPlayerImage.src =  'assets/images/minpokeball.png';
+        textPlayerCurrent.innerText = player1;
 
     } else {
-    pokeballCurrentPlayerImage.src =  'assets/images/minultraball.png';
-    textPlayerCurrent.innerText = player2;
+        pokeballCurrentPlayerImage.src =  'assets/images/minultraball.png';
+        textPlayerCurrent.innerText = player2;
     }
 })
 
@@ -538,12 +532,7 @@ function winner(tabuleiro) {
     }
 }
 
-const text = document.getElementById('result');
-
 function textWinner(currentPlayer) {
-    text.innerText = '';
-    text.style.display = 'inherit';
-    text.innerText = `Parabéns ${currentPlayer}, você venceu!`;
     audio2.pause()
     audio_vitoria.volume = 0.15
     audio_vitoria.play()
@@ -554,6 +543,8 @@ function textWinner(currentPlayer) {
     
     audio_vitoria.volume = 0.15;
     audio_vitoria.play();
+
+    buildPopUp(`Parabéns ${currentPlayer}, você venceu!`);
 
     buildResetButton();
 
@@ -570,17 +561,40 @@ const buildResetButton = () => {
     reset.appendChild(reset__button);
 }
 
-const buildPopUp = () => {
-    const back
+const buildPopUp = (message) => {
+    const backgroundDiv = document.createElement('div');
+    backgroundDiv.id = 'backgroundDiv';
+    backgroundDiv.classList.add('pop-up-background');
+    backgroundDiv.style.display = 'inherit';
+
+    const popUpDiv = document.createElement('div');
+    popUpDiv.id = 'popUpDiv';
+    popUpDiv.classList.add('pop-up__message');
+
+    const popUpDivTitle = document.createElement('h2');
+    popUpDivTitle.innerText = message;
+
+    const xButton = document.createElement('button');
+    xButton.id = 'escButton';
+    xButton.classList.add('x-button');
+    xButton.innerText = 'x';
+
+    popUpDiv.appendChild(popUpDivTitle);
+    popUpDiv.appendChild(xButton);
+    
+    backgroundDiv.appendChild(popUpDiv);
+
+    body.appendChild(backgroundDiv);
+
+    const escGame = document.getElementById('escButton');
+    const bkgDiv = document.getElementById('backgroundDiv');
+    
+    escGame.addEventListener('click', () => {
+        body.removeChild(bkgDiv);
+    });
 }
 
 function textDraw() {
-    const text = document.getElementById('result');
-    text.innerText  = '';
-    text.style.display = 'inherit'
-    text.innerText  = 'Houve um empate!';
-    buildResetButton();
-
     audio2.pause()
     audio_vitoria.volume = 0.15
     audio_vitoria.play()
@@ -593,6 +607,10 @@ function textDraw() {
     audio_vitoria.play();
 
     mainContainer.style.pointerEvents = 'none';
+
+    buildPopUp('Houve um empate!')
+
+    buildResetButton();
 }
 
 let count = 0
@@ -645,10 +663,6 @@ reset.addEventListener('click', function(){
     [29,30,31,32,33,34,35],
     [36,37,28,39,40,41,42]
     ];
-
-
-    text.innerHTML = '';
-    text.style.display = 'none';
     
     reset.innerHTML = ''
 
